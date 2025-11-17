@@ -1,26 +1,32 @@
+typescript
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-import { GoogleGenAI } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
 export const generateHaiku = async (belief: string): Promise<string> => {
   try {
-    const prompt = `Transforma la siguiente creencia limitante en un haiku neuroplástico que inspire resiliencia, en español, con la estructura 5-7-5. La creencia es: "${belief}"`;
-
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-      config: {
-        systemInstruction: "Eres un poeta experto en neurociencia y la filosofía Kintsugi. Tu misión es reparar el alma con palabras. Responde únicamente con el haiku. No incluyas nada más.",
-        temperature: 0.8,
-        topP: 1,
-        topK: 32,
-      },
+    const model = genAI.getGenerativeModel({ 
+      model: "gemini-1.5-flash",
+      systemInstruction: "Eres un poeta experto en neurociencia y filosofía Kintsugi. Responde SOLO con el haiku."
     });
 
-    return response.text.trim();
+    const prompt = `Transforma esta creencia en haiku 5-7-5 en español: "${belief}"`;
+
+    const result = await model.generateContent(prompt);
+    return result.response.text();
   } catch (error) {
-    console.error("Error generating haiku:", error);
-    return "No se pudo crear el haiku. Por favor, intenta de nuevo.";
+    console.error(error);
+    return "Error al crear haiku";
   }
 };
+
+
+*TERMINAL:*
+
+npm install @google/generative-ai
+
+
+*.env:*
+
+VITE_GEMINI_API_KEY=AIzaSyCTi-LOaJyzELaZ7YPdpByLDobVksnG-vk
+
