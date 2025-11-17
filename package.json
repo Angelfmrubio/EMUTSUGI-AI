@@ -1,11 +1,11 @@
 {
-"name": "emutsugi-dojo-neuroactivo-digital",
+  "name": "copy-of-emutsugi:-dojo-neuroactivo-digital",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "chmod +x ./node_modules/.bin/vite && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
