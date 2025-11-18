@@ -1,33 +1,33 @@
 import { useState } from 'react';
 import { Flame } from 'lucide-react';
 
-const PSSA_PHASES = [
+const WELLBEING_PROTOCOL = [
   { 
     icon: Flame, 
-    title: "PENSAR - Observar la tormenta", 
-    instruction: "Identifica el pensamiento. No lo juzgues. Solo nómbralo.",
-    affirmation: "Tengo un pensamiento, no soy el pensamiento.",
+    title: "Claridad - Observar con calma", 
+    instruction: "Identifica el pensamiento con curiosidad amable. Nómbralo sin juzgar.",
+    affirmation: "Yo soy el observador consciente de mis pensamientos.",
     duration: 15000 
   },
   { 
     icon: Flame, 
-    title: "SENTIR - Hacia el corazón", 
-    instruction: "Lleva tu atención a tu pecho. Respira en esa sensación.",
-    affirmation: "Mi SNIC (corazón) puede contener esto. Latiré con coherencia.",
+    title: "Conexión - Escuchar el corazón", 
+    instruction: "Lleva tu atención a tu pecho. Respira con suavidad en esa sensación.",
+    affirmation: "Mi corazón contiene toda la fuerza que necesito ahora.",
     duration: 15000 
   },
   { 
     icon: Flame, 
-    title: "SOLTAR - Cenizas doradas", 
-    instruction: "Visualiza ese patrón quemándose. Convirtiéndose en luz.",
-    affirmation: "Libero lo que ya no me sirve. Soy fénix.",
+    title: "Liberar - Transformar en luz", 
+    instruction: "Visualiza ese patrón transformándose en energía útil.",
+    affirmation: "Transformo lo que ya no me sirve en sabiduría interior.",
     duration: 15000 
   },
   { 
     icon: Flame, 
-    title: "ACTUAR - Un paso", 
-    instruction: "¿Qué acción pequeña y deliberada darás ahora?",
-    affirmation: "Mi SNE (cuerpo) y SNC (mente) actúan juntos.",
+    title: "Potencia - Primer paso consciente", 
+    instruction: "Elige una acción pequeña que alinee con tu bienestar.",
+    affirmation: "Mi mente, corazón y cuerpo actúan en armonía ahora.",
     duration: 15000 
   },
 ];
@@ -46,12 +46,12 @@ export function CrisisButton() {
   };
 
   const runPhase = (phaseIndex: number) => {
-    if (phaseIndex >= PSSA_PHASES.length) {
+    if (phaseIndex >= WELLBEING_PROTOCOL.length) {
       completeProtocol();
       return;
     }
 
-    const phase = PSSA_PHASES[phaseIndex];
+    const phase = WELLBEING_PROTOCOL[phaseIndex];
     const interval = phase.duration / 100;
     let currentProgress = 0;
 
@@ -78,61 +78,51 @@ export function CrisisButton() {
     }, 3000);
   };
 
-  const phase = PSSA_PHASES[currentPhase] || PSSA_PHASES[PSSA_PHASES.length - 1];
+  const phase = WELLBEING_PROTOCOL[currentPhase] || WELLBEING_PROTOCOL[WELLBEING_PROTOCOL.length - 1];
   const PhaseIcon = phase.icon;
 
   return (
     <>
-      {/* 🔥 BOTÓN DE CRISIS - SIEMPRE VISIBLE */}
+      {/* BOTÓN DE BIENESTAR INMEDIATO */}
       <button 
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 
-                   h-20 w-20 sm:h-20 sm:w-20 h-16 w-16 
-                   rounded-full 
-                   bg-gradient-to-br from-sne-500 to-snic-500 
-                   shadow-[0_0_30px_rgba(244,114,182,0.3)] 
-                   z-50 
-                   animate-pulse-slow 
-                   p-4 
-                   hover:scale-110 
-                   transition-transform
-                   border-2 border-gold-500"
-        aria-label="Protocolo de crisis inmediato"
-        title="Protocolo P.S.S.A. - 60 segundos"
+        className="fixed bottom-8 right-8 h-18 w-18 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 shadow-[0_0_30px_rgba(245,158,11,0.3)] z-50 hover:scale-110 transition-transform border-2 border-amber-300"
+        aria-label="Activar bienestar inmediato"
+        title="Protocolo de Coherencia - 60 segundos"
       >
         <Flame className="h-10 w-10 text-white" />
       </button>
 
-      {/* MODAL DEL PROTOCOLO */}
+      {/* MODAL */}
       {isOpen && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-slate-900 border-2 border-gold-500 rounded-2xl p-8 max-w-2xl w-full shadow-2xl">
+          <div className="bg-slate-900 border border-amber-500 rounded-2xl p-8 max-w-2xl w-full shadow-2xl">
             {/* Header */}
             <div className="text-center mb-8">
-              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-sne-500 to-snic-500 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center">
                 <Flame className="h-8 w-8 text-white" />
               </div>
-              <h2 className="text-3xl font-bold text-gold-500 font-serif">El Incendio y el Fénix</h2>
-              <p className="text-slate-400 mt-2">Protocolo P.S.S.A. - 60 segundos de coherencia</p>
+              <h2 className="text-3xl font-bold text-amber-500 font-serif">Protocolo de Coherencia</h2>
+              <p className="text-slate-400 mt-2">60 segundos para tu bienestar integral</p>
             </div>
 
             {/* Contenido */}
             {!isActive ? (
               <div className="space-y-6">
                 <p className="text-center text-xl text-slate-300 italic">
-                  "El dolor es temporal. Tú eres eterno."
+                  "Cada momento es una nueva oportunidad."
                 </p>
 
                 <div className="bg-slate-800 rounded-lg p-6">
                   <p className="text-slate-400 mb-4">
-                    Este protocolo activará tu tridente neurológico en momentos críticos:
+                    Este protocolo activa tu tridente neurológico:
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    {PSSA_PHASES.map((p, i) => {
+                    {WELLBEING_PROTOCOL.map((p, i) => {
                       const Icon = p.icon;
                       return (
                         <div key={i} className="flex items-center gap-2 text-slate-300">
-                          <Icon className="h-4 w-4 text-gold-500" />
+                          <Icon className="h-4 w-4 text-amber-500" />
                           <span>{p.title.split(' - ')[0]}</span>
                         </div>
                       );
@@ -142,56 +132,52 @@ export function CrisisButton() {
 
                 <button
                   onClick={startProtocol}
-                  className="w-full py-4 bg-gradient-to-r from-sne-500 to-snic-500 text-white font-bold rounded-lg hover:shadow-lg transition-all"
+                  className="w-full py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold rounded-lg hover:shadow-lg transition-all"
                 >
-                  Iniciar Protocolo
+                  Iniciar
                 </button>
               </div>
             ) : (
               <div className="space-y-6">
-                {currentPhase < PSSA_PHASES.length ? (
+                {currentPhase < WELLBEING_PROTOCOL.length ? (
                   <>
-                    {/* Fase actual */}
                     <div className="text-center">
-                      <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-sne-500 to-snic-500 rounded-full flex items-center justify-center">
+                      <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center">
                         <PhaseIcon className="h-10 w-10 text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold text-gold-500">{phase.title}</h3>
+                      <h3 className="text-2xl font-bold text-amber-500">{phase.title}</h3>
                     </div>
 
-                    {/* Instrucción */}
                     <div className="bg-slate-800 rounded-lg p-6">
                       <p className="text-slate-300 text-lg mb-4">{phase.instruction}</p>
                       
-                      {/* Barra de progreso */}
                       <div className="bg-slate-700 rounded-full h-2 overflow-hidden mb-4">
                         <div 
-                          className="bg-gradient-to-r from-sne-500 to-snic-500 h-full transition-all duration-300"
+                          className="bg-gradient-to-r from-amber-500 to-orange-500 h-full transition-all duration-300"
                           style={{ width: `${progress}%` }}
                         />
                       </div>
 
-                      {/* Afirmación */}
-                      <p className="text-gold-400 text-center italic">
+                      <p className="text-amber-400 text-center italic">
                         "{phase.affirmation}"
                       </p>
                     </div>
 
                     <p className="text-center text-slate-400 text-sm">
-                      Fase {currentPhase + 1} de {PSSA_PHASES.length}
+                      Fase {currentPhase + 1} de {WELLBEING_PROTOCOL.length}
                     </p>
                   </>
                 ) : (
                   <div className="text-center space-y-4">
-                    <div className="w-20 h-20 mx-auto bg-gold-500 rounded-full flex items-center justify-center">
+                    <div className="w-20 h-20 mx-auto bg-amber-500 rounded-full flex items-center justify-center">
                       ✨
                     </div>
-                    <h3 className="text-2xl font-bold text-gold-500">Protocolo Completado</h3>
+                    <h3 className="text-2xl font-bold text-amber-500">Protocolo Completado</h3>
                     <p className="text-slate-300">
-                      Tu tridente se recalibra. Has activado coherencia en tus tres cerebros.
+                      Tu tridente neurológico está en coherencia. Has activado tu bienestar integral.
                     </p>
-                    <p className="text-gold-400 italic">
-                      "El fénix emerge de sus propias cenizas doradas"
+                    <p className="text-amber-400 italic">
+                      "El fénix surge de su propia transformación"
                     </p>
                   </div>
                 )}
