@@ -1,26 +1,214 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EMUTSUGI - Oasis de Sombra</title>
-    <meta name="description" content="Donde tus grietas se iluminan. Autocreación consciente mediante neurociencia y poesía." />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMUTSUGI - Universo</title>
     
-    <!-- 🔥 FUENTES DE PODER - NO TOCAR -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Metadatos (no importantes para la función) -->
-    <meta name="author" content="EMUTSUGI" />
-    <meta property="og:title" content="EMUTSUGI" />
-    <meta property="og:description" content="Oasis de Sombra en Desiertos de Luz" />
-    <meta property="og:type" content="website" />
-    <script type="module" crossorigin src="/assets/index-m0PIB_IV.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D4-hcx9X.css">
-  </head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <body>
-    <div id="root"></div>
-  </body>
+    <style>
+        /* 1. LA ATMÓSFERA (El Fondo Místico) 
+           Reemplazamos el negro plano por el degradado profundo de tu imagen de Canva */
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Este degradado simula la luz que viene del centro/arriba como en tu diseño */
+            background: radial-gradient(circle at 50% 30%, #4e1a0a 0%, #240802 40%, #080202 100%);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Contenedor principal para centrar todo */
+        .container {
+            text-align: center;
+            max-width: 900px;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Texto pequeño superior "UNIVERSO" */
+        .top-label {
+            color: #a88848;
+            font-size: 0.9rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        /* 2. EL TÍTULO DORADO (Efecto Oro Realista) */
+        h1.main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 5rem; /* Grande e imponente */
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            
+            /* El degradado metálico extraído de tu diseño */
+            background: linear-gradient(to bottom, 
+                #ffebbf 0%,   /* Brillo */
+                #d4af37 40%,  /* Oro */
+                #8c6a36 100%  /* Bronce */
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            
+            /* Sombra para despegarlo del fondo oscuro */
+            filter: drop-shadow(0px 5px 10px rgba(0,0,0,0.8));
+        }
+
+        /* Subtítulo "GRIETAS DORADAS..." */
+        h2.subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #e0c272;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-top: 10px;
+            margin-bottom: 40px;
+            font-weight: 400;
+            border-bottom: 1px solid transparent;
+            display: inline-block;
+            position: relative;
+        }
+
+        /* Líneas decorativas sutiles a los lados del subtítulo (Opcional, para elegancia) */
+        h2.subtitle::before, h2.subtitle::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 1px;
+            background: #8c6a36;
+            opacity: 0.5;
+        }
+        h2.subtitle::before { left: -60px; }
+        h2.subtitle::after { right: -60px; }
+
+        /* Párrafo poético central */
+        .poetic-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #dedede;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-weight: 300;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* Palabra BRILLA */
+        .shine-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: #ffebbf;
+            letter-spacing: 0.8em;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+        }
+
+        /* 3. BOTONES (Estilo Premium) */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+
+        /* Botón Principal: Relleno Dorado */
+        .btn-primary {
+            /* Degradado horizontal oro y cobre */
+            background: linear-gradient(90deg, #b88a30 0%, #e3c376 50%, #b88a30 100%);
+            color: #1a0503;
+            border: 1px solid #e3c376;
+            box-shadow: 0 0 20px rgba(184, 138, 48, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(184, 138, 48, 0.6);
+            filter: brightness(1.1);
+        }
+
+        /* Botón Secundario: Solo Borde */
+        .btn-secondary {
+            background: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+        }
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #fff;
+            border-color: #fff;
+        }
+
+        /* Efecto de líneas de luz sutiles en el fondo (opcional, añade profundidad) */
+        .light-beam {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(ellipse at top, rgba(255, 200, 100, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            h1.main-title { font-size: 3rem; }
+            h2.subtitle { font-size: 0.9rem; letter-spacing: 0.2em; }
+            h2.subtitle::before, h2.subtitle::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="light-beam"></div>
+
+    <div class="container">
+        <div class="top-label">Universo</div>
+        
+        <h1 class="main-title">EMUTSUGI</h1>
+        
+        <h2 class="subtitle">Grietas Doradas con Propósito</h2>
+        
+        <p class="poetic-text">
+            Transmuta tu sombra, decodifica tu presente,<br>
+            hereda tu legado dorado.
+        </p>
+        
+        <div class="shine-text">
+            Brilla
+        </div>
+
+        <div class="buttons-container">
+            <a href="#" class="btn btn-primary">Iniciar Transformación</a>
+            <a href="#" class="btn btn-secondary">Explorar Principios</a>
+        </div>
+    </div>
+
+</body>
 </html>
