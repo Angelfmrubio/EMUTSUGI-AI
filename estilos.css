@@ -1,141 +1,137 @@
-/* ARCHIVO: estilos.css */
-
-/* 1. FUENTES Y RESET */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap');
-
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Fondo Cósmico Nexus */
-    background: radial-gradient(circle at 50% 100%, #6e4610 0%, #1a1205 20%, #030a14 50%, #010408 100%);
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
 
-/* 2. BARRA DE NAVEGACIÓN (Para moverte entre páginas) */
-nav {
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(5px);
-    position: fixed; /* Siempre visible arriba */
-    top: 0;
-    z-index: 100;
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-nav a {
-    color: #ffca61;
-    text-decoration: none;
-    margin: 0 15px;
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: color 0.3s;
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-nav a:hover {
-    color: #fff;
-    text-shadow: 0 0 10px #ffca61;
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-/* 3. CONTENEDOR CENTRAL */
-.container {
-    text-align: center;
-    max-width: 900px;
-    padding: 100px 20px 40px 20px; /* Padding top alto para no tapar con el menú */
-    position: relative;
-    z-index: 1;
+.card {
+  padding: 2em;
 }
 
-/* 4. TIPOGRAFÍA NEXUS */
-h1.main-title {
-    font-family: 'Cinzel', serif;
-    font-size: 4rem;
-    margin: 0;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    line-height: 1.1;
+.read-the-docs {
+  color: #888;
+}
+/* =========================================
+   SUERO DE TRANSFORMACIÓN NEXUS (GLOBAL)
+   ========================================= */
+
+/* 1. IMPORTAR LA FUENTE DE LA VERDAD (Cinzel + Montserrat) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;700&display=swap');
+
+/* 2. EL LIENZO CÓSMICO (Forzar el fondo oscuro en toda la app) */
+body, #root, .app-container {
+    background: radial-gradient(circle at 50% 100%, #6e4610 0%, #1a1205 20%, #030a14 50%, #010408 100%) !important;
+    background-attachment: fixed; /* Para que el fondo no se mueva al hacer scroll */
+    color: #e0e0e0 !important; /* Texto base blanco hueso */
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+/* 3. TIPOGRAFÍA DE ORO (Transformar tus títulos actuales) */
+h1, h2, h3, .titulo-principal, .header-text {
+    font-family: 'Cinzel', serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+    
+    /* El degradado de Oro Nexus */
     background: linear-gradient(to bottom, #fff4cc 0%, #ffbd3d 45%, #b88a30 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0px 4px 8px rgba(0, 10, 30, 0.8));
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    
+    /* Sombra para legibilidad */
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.9));
 }
 
-h2.subtitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    color: #ffca61;
+/* Subtítulos o textos pequeños destacados */
+h4, h5, h6, .subtitulo, label, span.highlight {
+    color: #ffca61 !important; /* Amarillo Solar */
+    font-family: 'Montserrat', sans-serif !important;
     text-transform: uppercase;
-    letter-spacing: 0.3em;
-    margin-top: 15px;
-    margin-bottom: 40px;
-    font-weight: 500;
-    text-shadow: 0 0 10px rgba(255, 202, 97, 0.4);
+    letter-spacing: 0.15em;
 }
 
-p.content-text {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #dedede;
-    margin-bottom: 30px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+/* 4. TRANSFORMACIÓN DE TARJETAS (De Blanco a Cristal Oscuro) */
+/* Esto busca cualquier div que tenga fondo blanco o gris claro y lo oscurece */
+div[class*="bg-white"], 
+div[class*="bg-gray"], 
+.card, 
+.panel,
+section {
+    background-color: rgba(10, 20, 35, 0.7) !important; /* Azul oscuro semi-transparente */
+    backdrop-filter: blur(10px); /* Efecto vidrio */
+    border: 1px solid rgba(255, 189, 61, 0.3) !important; /* Borde dorado sutil */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    color: #fff !important;
+    border-radius: 12px !important;
 }
 
-/* Frase Poética */
-.poetic-text {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    color: #f0f0f0;
-    line-height: 1.6;
-    margin-bottom: 60px;
+/* 5. BOTONES (De Azul/Negro a Oro Nexus) */
+button, .btn, a.button {
+    background: #eebc2f !important; /* Amarillo Mostaza Nexus */
+    color: #050e1a !important; /* Texto oscuro */
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(238, 188, 47, 0.4) !important;
+    transition: transform 0.2s ease;
 }
-.poetic-text span { color: #ffdb85; font-style: italic; }
 
-/* 5. BOTONES */
-.btn-primary {
-    display: inline-block;
-    padding: 15px 40px;
-    background-color: #eebc2f;
-    color: #050e1a;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 4px;
-    box-shadow: 0 4px 20px rgba(238, 188, 47, 0.4);
-    transition: all 0.3s ease;
-    margin-top: 20px;
-}
-.btn-primary:hover {
-    background-color: #ffce47;
-    box-shadow: 0 0 30px rgba(238, 188, 47, 0.7);
+button:hover, .btn:hover {
+    background: #ffce47 !important;
     transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(238, 188, 47, 0.6) !important;
 }
 
-/* 6. ELEMENTOS VISUALES */
-.visual-center {
-    margin: 0 auto 50px auto;
-    width: 150px;
-    height: 1px;
-    position: relative;
-    background: linear-gradient(90deg, transparent, #ff9d00, transparent);
-    box-shadow: 0 0 30px 5px rgba(255, 157, 0, 0.3);
+/* 6. CORRECCIONES ESPECÍFICAS PARA TUS CAPTURAS */
+
+/* Para los textos de párrafo (que se ven grises en tus fotos) */
+p, li {
+    color: #cfcfcf !important;
+    line-height: 1.6 !important;
+    font-size: 1.05rem !important;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    h1.main-title { font-size: 2.5rem; }
-    h2.subtitle { font-size: 0.7rem; }
+/* Para los inputs de texto (si tienes formularios) */
+input, textarea {
+    background: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid #b88a30 !important;
+    color: #ffbd3d !important;
+}
+
+/* Para las barras de progreso (como en la imagen 1 y 4) */
+progress, .progress-bar {
+    accent-color: #eebc2f !important;
+}
+div[role="progressbar"] > div {
+    background-color: #eebc2f !important;
 }
