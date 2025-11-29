@@ -1,27 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>emutsugi-fenix7</title>
-    <meta name="description" content="**EMUTSUGI**: Donde tus grietas se iluminan. Autocreación consciente mediante neurociencia y poesía. Convierte tu dolor en belleza con haikus, rituales y tecnología que reconecta tu cerebro.">
-    <meta name="author" content="Lovable" />
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EMUTSUGI — Grietas Doradas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Paleta de Colores Kintsugi Refinada */
+    :root {
+      /* IMPORTANTE: Esto debe ser :root, no :raíz */
+      --clr-gold-light: hsl(45, 93%, 65%); 
+      --clr-copper: hsl(25, 55%, 50%); 
+      --clr-dark-deep: hsl(220, 15%, 10%); 
+      --clr-text-light: hsl(0, 0%, 95%);
+    }
 
-    <meta property="og:title" content="emutsugi-golden-light-flow" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    /* Base Styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--clr-text-light);
+      /* Asegúrate de que portada-emutsugi.jpg esté en la misma carpeta */
+      background: url('portada-emutsugi.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    <script type="module" crossorigin src="/assets/index-C-v-b6Z7.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DFf-vqxw.css">
-  </head>
+    /* Portada: Centrado Vertical y Overlay Oscuro */
+    .portada {
+      text-align: center;
+      padding: clamp(60px, 15vh, 150px) 24px;
+      /* Capa oscura para asegurar el contraste */
+      background: rgba(18, 18, 18, 0.75);
+      /* Ajustamos la altura para que el footer no se superponga */
+      min-height: calc(100vh - 80px); 
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Centrado vertical */
+      align-items: center;
+    }
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-  </body>
+    /* Estilo del texto */
+    .universo {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      letter-spacing: 0.3em;
+      color: var(--clr-text-light); 
+      opacity: 0.7; 
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-family: 'Cinzel', serif;
+    }
+
+    /* Título principal: EFECTO METAL LÍQUIDO */
+    .emutsugi {
+      font-size: clamp(3rem, 10vw, 6rem);
+      letter-spacing: 0.18em;
+      margin: 0 0 0.5rem 0; 
+      font-weight: 700;
+      text-transform: uppercase;
+      font-family: 'Cinzel', serif;
+
+      /* Degradado metálico vertical (Oro a Cobre) */
+      background: linear-gradient(180deg, var(--clr-gold-light) 20%, var(--clr-copper) 80%);
+      -webkit-background-clip: text; 
+      background-clip: text;
+      color: transparent; /* Permite ver el degradado */
+      
+      /* Resplandor (Glow) */
+      filter: drop-shadow(0 0 18px rgba(218, 165, 32, 0.7));
+    }
+
+    .grietas {
+      font-size: clamp(0.9rem, 2vw, 1.3rem);
+      letter-spacing: 0.25em;
+      margin: 0.5rem 0 1.5rem; 
+      color: var(--clr-copper); 
+      font-weight: 400;
+      text-transform: uppercase;
+      font-family: 'Cinzel', serif;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+    }
+
+    .frase {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 1.5rem auto 2.5rem;
+      font-weight: 300;
+      color: var(--clr-text-light);
+      word-break: break-word;
+      hyphens: auto;
+    }
+
+    .frase strong {
+      font-weight: 700;
+      color: var(--clr-gold-light);
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.5); 
+    }
+
+    .acciones {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding: 0 10px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    /* Botones con Estilo Kintsugi/Premium */
+    .btn {
+      display: inline-block;
+      min-width: 180px;
+      background: rgba(var(--clr-dark-deep), 0.5);
+      border: 2px solid var(--clr-copper);
+      color: var(--clr-text-light);
+      padding: 14px 30px;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Botón primario: INICIAR TRANSFORMACIÓN */
+    .btn:first-child {
+      border-color: var(--clr-gold-light);
+      box-shadow: 0 0 15px rgba(218, 165, 32, 0.2); 
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, var(--clr-copper), var(--clr-gold-light));
+      color: var(--clr-dark-deep);
+      border-color: var(--clr-gold-light);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.8); 
+    }
+
+    /* --- ESTILOS DEL FOOTER --- */
+    .main-footer {
+      background-color: var(--clr-dark-deep); 
+      color: var(--clr-text-light);
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      border-top: 1px solid rgba(0, 0, 0, 0.5); 
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .footer-links a {
+      color: var(--clr-text-light);
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+      font-weight: 300;
+    }
+
+    .footer-links a:hover {
+      color: var(--clr-gold-light); 
+    }
+
+    .footer-copy {
+        margin: 0;
+        opacity: 0.6; 
+    }
+    
+    /* Media Query para responsividad */
+    @media (max-width: 768px) {
+      .acciones {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="portada">
+    <p class="universo">UNIVERSO</p>
+    <h1 class="emutsugi">EMUTSUGI</h1>
+    <p class="grietas">GRIETAS DORADAS CON PROPÓSITO</p>
+    <p class="frase">
+      Transmuta tu sombra, decodifica tu presente,<br>
+      hereda tu legado dorado.<br>
+      <strong>Brilla.</strong>
+    </p>
+    <div class="acciones">
+      <a class="btn" href="/transformacion">INICIAR TRANSFORMACIÓN</a>
+      <a class="btn" href="/principios">EXPLORAR PRINCIPIOS</a>
+    </div>
+  </section>
+  
+    <footer class="main-footer">
+    <div class="footer-content">
+      <p class="footer-copy">EMUTSUGI &copy; 2025. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="/privacidad">Política de Privacidad</a>
+        <a href="/contacto">Contacto</a>
+        <a href="/legal">Aviso Legal</a>
+      </div>
+    </div>
+  </footer>
+</body>
 </html>
