@@ -43,11 +43,11 @@ const AboutPage = () => {
           <Card className="mb-8">
             <CardContent className="pt-6">
               <h2 className="text-2xl font-semibold mb-4 text-neutral-800">Fundamentos Científicos</h2>
-              <Quote 
-                text="El cerebro no aprende a través del dolor. Aprende a través de la curiosidad, el asombro y la diversión."
-                author="Dr. Marian Rojas Estapé"
-                className="mb-6"
-              />
+            <Quote 
+              text="El cerebro aprende a través de la curiosidad, el asombro y la experiencia consciente."
+              author="Dr. Marian Rojas Estapé"
+              className="mb-6"
+            />
               <div className="space-y-4">
                 {SCIENTIFIC_FOUNDATIONS.map((foundation) => (
                   <div key={foundation.title} className="p-4 border rounded-lg bg-white">

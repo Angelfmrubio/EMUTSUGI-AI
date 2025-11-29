@@ -78,8 +78,8 @@ const PRINCIPLES = [
     description: "El sistema se basa en métodos de evaluación psicológica validados científicamente, adaptados para su aplicación mediante algoritmos de procesamiento semántico avanzado."
   },
   {
-    title: "No Autodiagnóstico",
-    description: "Los resultados no constituyen un diagnóstico clínico definitivo, sino una orientación profesional basada en patrones identificados durante la evaluación multimodal."
+    title: "Orientación Profesional",
+    description: "Los resultados constituyen una orientación basada en patrones identificados durante la evaluación multimodal, diseñada para guiarte hacia el crecimiento."
   },
   {
     title: "Derivación Especializada",
@@ -89,9 +89,9 @@ const PRINCIPLES = [
 
 const ETHICAL_PRINCIPLES = [
   "Transparencia en todos los procesos de evaluación y análisis.",
-  "No almacenamiento de información sensible que pueda identificar al usuario.",
-  "Claridad sobre los límites de la evaluación automatizada.",
-  "Prevención del uso inadecuado de resultados como diagnósticos definitivos.",
+  "Protección total de información sensible del usuario.",
+  "Claridad sobre el alcance de la evaluación automatizada.",
+  "Guía para el uso apropiado de resultados como orientación profesional.",
   "Actualización continua basada en investigación científica reciente.",
   "Accesibilidad para diversos perfiles de usuarios."
 ];
@@ -106,8 +106,8 @@ const TECH_DIFFERENTIALS = [
     description: "Procesamiento multinivel del lenguaje para identificar patrones, significados implícitos y estructuras cognitivas subyacentes."
   },
   {
-    title: "Algoritmos Éticos",
-    description: "Desarrollo responsable de algoritmos que priorizan el bienestar del usuario y evitan sesgos interpretativos."
+    title: "Algoritmos Conscientes",
+    description: "Desarrollo responsable de algoritmos que priorizan el bienestar del usuario y cultivan claridad interpretativa."
   },
   {
     title: "Intervención Temprana",

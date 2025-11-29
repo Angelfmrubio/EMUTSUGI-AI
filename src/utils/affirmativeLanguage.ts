@@ -71,7 +71,7 @@ export const affirmativeTransforms = {
     },
     act: {
       label: "Manifestar Coherencia",
-      description: "Sin Miedo al Miedo",
+      description: "Presencia plena ante cada emoción",
       prompt: "Define tu próxima acción concreta de manifestación..."
     }
   },
@@ -90,18 +90,35 @@ export const affirmativeTransforms = {
     "Tu obra es tu oración, tu creación es tu respuesta"
   ],
   
-  // Transformaciones Léxicas Generales
+  // Transformaciones Léxicas Generales - EXPANDIDAS
   lexicon: {
-    problem: "oportunidad de coherencia",
+    problema: "oportunidad de coherencia",
+    problemas: "oportunidades de coherencia",
     error: "exploración de patrones",
-    failure: "recalibración necesaria",
-    stress: "energía en reorganización",
-    anxiety: "expansión hacia nuevos territorios",
-    depression: "pausa para construcción interna",
-    avoid: "cultivar",
+    errores: "exploraciones de patrones",
+    fracaso: "recalibración necesaria",
+    fracasos: "recalibraciones necesarias",
+    fracasar: "recalibrar",
+    estrés: "energía en reorganización",
+    estresado: "energía reorganizándose",
+    ansiedad: "expansión hacia nuevos territorios",
+    ansioso: "expansión territorial activa",
+    depresión: "pausa para construcción interna",
+    deprimido: "construcción interna profunda",
+    evitar: "cultivar",
+    evita: "cultiva",
+    evitando: "cultivando",
     notWorking: "se recalibra con propósito",
     cannotDo: "desarrollando capacidad para",
-    difficult: "desafiante y constructivo"
+    difícil: "desafiante y constructivo",
+    imposible: "territorios por explorar",
+    miedo: "energía de protección activa",
+    miedos: "energías protectoras activas",
+    sin: "cultivando",
+    nunca: "en proceso de",
+    no: "oportunidad de",
+    fallo: "aprendizaje en acción",
+    fallos: "aprendizajes en acción"
   }
 };
 

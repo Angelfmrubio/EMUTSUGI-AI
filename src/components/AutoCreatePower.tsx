@@ -24,7 +24,7 @@ export const AutoCreatePower = () => {
     { id: 'think', icon: Lightbulb, label: 'Construir Pensamientos', description: 'Sistema Reticular Activador Ascendente' },
     { id: 'feel', icon: Target, label: 'Cultivar Sensaciones', description: 'Neuroplasticidad Consciente' },
     { id: 'release', icon: Zap, label: 'Expandir Espacios', description: 'Mutear el Ruido Mental' },
-    { id: 'act', icon: Sparkles, label: 'Manifestar Coherencia', description: 'Sin Miedo al Miedo' }
+    { id: 'act', icon: Sparkles, label: 'Manifestar Coherencia', description: 'Presencia plena ante cada emoción' }
   ];
 
   return (

@@ -1,22 +1,20 @@
 {
-  "title": "Estilos base",
-  "description": "Estilos base para cuerpo y encabezados",
-  "styles": {
-    "body": {
-      "background-color": "var(--background)",
-      "margin": "0",
-      "font-family": "'Segoe UI', sans-serif",
-      "font-size": "16px",
-      "color": "var(--foreground)"
-},
-    "h1": {
-      "font-family": "'Segoe UI', sans-serif"
-},
-    "h2": {
-      "font-family": "'Segoe UI', sans-serif"
-},
-    "h3": {
-      "font-family": "'Segoe UI', sans-serif"
-}
-}
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "src/index.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  }
 }

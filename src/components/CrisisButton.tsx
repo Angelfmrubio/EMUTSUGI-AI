@@ -1,38 +1,50 @@
 import { useState } from 'react';
-import { Flame } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Flame, Sparkles, Heart, Brain, Footprints } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
 
-const WELLBEING_PROTOCOL = [
-  { 
-    icon: Flame, 
-    title: "Claridad - Observar con calma", 
-    instruction: "Identifica el pensamiento con curiosidad amable. Nómbralo sin juzgar.",
-    affirmation: "Yo soy el observador consciente de mis pensamientos.",
-    duration: 15000 
+const PSSA_PHASES = [
+  {
+    id: 'pensar',
+    icon: Brain,
+    title: 'PENSAR - El Observador',
+    instruction: 'Identifica el pensamiento. Obsérvalo con curiosidad.',
+    affirmation: 'Mi mente reconoce patrones. Soy el testigo consciente de mis pensamientos.',
+    color: 'from-gold-400 to-gold-600',
+    duration: 15000,
   },
-  { 
-    icon: Flame, 
-    title: "Conexión - Escuchar el corazón", 
-    instruction: "Lleva tu atención a tu pecho. Respira con suavidad en esa sensación.",
-    affirmation: "Mi corazón contiene toda la fuerza que necesito ahora.",
-    duration: 15000 
+  {
+    id: 'sentir',
+    icon: Heart,
+    title: 'SENTIR - El Corazón Maestro',
+    instruction: 'Lleva tu atención al corazón. Respira en esa sensación.',
+    affirmation: '40,000 neuronas cantan en mi corazón. Respiro coherencia en cada latido.',
+    color: 'from-rose-400 to-rose-600',
+    duration: 20000,
   },
-  { 
-    icon: Flame, 
-    title: "Liberar - Transformar en luz", 
-    instruction: "Visualiza ese patrón transformándose en energía útil.",
-    affirmation: "Transformo lo que ya no me sirve en sabiduría interior.",
-    duration: 15000 
+  {
+    id: 'soltar',
+    icon: Sparkles,
+    title: 'SOLTAR - La Alquimia Interna',
+    instruction: 'Visualiza ese patrón transformándose en ceniza dorada.',
+    affirmation: 'Cada final cultiva un nuevo comienzo. Mi energía se reorganiza con propósito.',
+    color: 'from-amber-400 to-amber-600',
+    duration: 15000,
   },
-  { 
-    icon: Flame, 
-    title: "Potencia - Primer paso consciente", 
-    instruction: "Elige una acción pequeña que alinee con tu bienestar.",
-    affirmation: "Mi mente, corazón y cuerpo actúan en armonía ahora.",
-    duration: 15000 
+  {
+    id: 'actuar',
+    icon: Footprints,
+    title: 'ACTUAR - El Paso Deliberado',
+    instruction: 'Define tu próxima acción pequeña y concreta.',
+    affirmation: 'Soy el arquitecto de mi próximo momento. Cada paso construye mi realidad.',
+    color: 'from-emerald-400 to-emerald-600',
+    duration: 10000,
   },
 ];
 
-export function CrisisButton() {
+export const CrisisButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentPhase, setCurrentPhase] = useState(0);
   const [isActive, setIsActive] = useState(false);
@@ -46,12 +58,12 @@ export function CrisisButton() {
   };
 
   const runPhase = (phaseIndex: number) => {
-    if (phaseIndex >= WELLBEING_PROTOCOL.length) {
+    if (phaseIndex >= PSSA_PHASES.length) {
       completeProtocol();
       return;
     }
 
-    const phase = WELLBEING_PROTOCOL[phaseIndex];
+    const phase = PSSA_PHASES[phaseIndex];
     const interval = phase.duration / 100;
     let currentProgress = 0;
 
@@ -78,114 +90,116 @@ export function CrisisButton() {
     }, 3000);
   };
 
-  const phase = WELLBEING_PROTOCOL[currentPhase] || WELLBEING_PROTOCOL[WELLBEING_PROTOCOL.length - 1];
+  const phase = PSSA_PHASES[currentPhase] || PSSA_PHASES[PSSA_PHASES.length - 1];
   const PhaseIcon = phase.icon;
 
   return (
     <>
-      {/* BOTÓN DE BIENESTAR INMEDIATO */}
-      <button 
+      <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 h-18 w-18 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 shadow-[0_0_30px_rgba(245,158,11,0.3)] z-50 hover:scale-110 transition-transform border-2 border-amber-300"
-        aria-label="Activar bienestar inmediato"
-        title="Protocolo de Coherencia - 60 segundos"
+        className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-2xl bg-gradient-to-br from-rose-500 to-orange-600 hover:from-rose-600 hover:to-orange-700 z-50 animate-pulse"
+        title="Protocolo de Crisis"
       >
-        <Flame className="h-10 w-10 text-white" />
-      </button>
+        <Flame className="w-8 h-8 text-white" />
+      </Button>
 
-      {/* MODAL */}
-      {isOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-amber-500 rounded-2xl p-8 max-w-2xl w-full shadow-2xl">
-            {/* Header */}
-            <div className="text-center mb-8">
-              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center">
-                <Flame className="h-8 w-8 text-white" />
-              </div>
-              <h2 className="text-3xl font-bold text-amber-500 font-serif">Protocolo de Coherencia</h2>
-              <p className="text-slate-400 mt-2">60 segundos para tu bienestar integral</p>
-            </div>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent className="max-w-2xl bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-white border-gold-500/20">
+          <DialogHeader>
+            <DialogTitle className="text-3xl text-center bg-gradient-to-r from-gold-300 to-gold-100 bg-clip-text text-transparent">
+              El Incendio y el Fénix
+            </DialogTitle>
+          </DialogHeader>
 
-            {/* Contenido */}
-            {!isActive ? (
-              <div className="space-y-6">
-                <p className="text-center text-xl text-slate-300 italic">
-                  "Cada momento es una nueva oportunidad."
+          {!isActive ? (
+            <div className="space-y-6 py-6">
+              <p className="text-xl text-center text-gold-200 italic">
+                "El dolor es temporal. Tú eres eterno."
+              </p>
+              
+              <Card className="bg-neutral-800/50 border-gold-500/30 p-6">
+                <p className="text-lg text-center mb-6 text-neutral-200">
+                  Este protocolo P.S.S.A. activará tu coherencia tricerebral en momentos críticos.
+                  Cada fase construye sobre la anterior, transformando la intensidad en claridad.
                 </p>
-
-                <div className="bg-slate-800 rounded-lg p-6">
-                  <p className="text-slate-400 mb-4">
-                    Este protocolo activa tu tridente neurológico:
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    {WELLBEING_PROTOCOL.map((p, i) => {
-                      const Icon = p.icon;
-                      return (
-                        <div key={i} className="flex items-center gap-2 text-slate-300">
-                          <Icon className="h-4 w-4 text-amber-500" />
-                          <span>{p.title.split(' - ')[0]}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
+                
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  {PSSA_PHASES.map((p, i) => {
+                    const Icon = p.icon;
+                    return (
+                      <div key={p.id} className="flex items-center gap-3 p-3 bg-neutral-900/50 rounded-lg">
+                        <Icon className="w-6 h-6 text-gold-400" />
+                        <span className="text-sm text-neutral-300">{p.title.split(' - ')[0]}</span>
+                      </div>
+                    );
+                  })}
                 </div>
 
-                <button
-                  onClick={startProtocol}
-                  className="w-full py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold rounded-lg hover:shadow-lg transition-all"
-                >
-                  Iniciar
-                </button>
-              </div>
-            ) : (
-              <div className="space-y-6">
-                {currentPhase < WELLBEING_PROTOCOL.length ? (
-                  <>
-                    <div className="text-center">
-                      <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center">
-                        <PhaseIcon className="h-10 w-10 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-amber-500">{phase.title}</h3>
+                <p className="text-center text-sm text-gold-300 mb-4">
+                  Duración total: 60 segundos de coherencia guiada
+                </p>
+              </Card>
+
+              <Button
+                onClick={startProtocol}
+                className="w-full py-6 text-lg bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700"
+              >
+                Iniciar Protocolo
+              </Button>
+            </div>
+          ) : (
+            <div className="space-y-6 py-6">
+              {currentPhase < PSSA_PHASES.length ? (
+                <>
+                  <div className="flex flex-col items-center gap-4">
+                    <div className={`p-6 rounded-full bg-gradient-to-br ${phase.color} shadow-2xl animate-pulse`}>
+                      <PhaseIcon className="w-12 h-12 text-white" />
                     </div>
+                    
+                    <h3 className={`text-2xl font-bold text-center bg-gradient-to-r ${phase.color} bg-clip-text text-transparent`}>
+                      {phase.title}
+                    </h3>
+                  </div>
 
-                    <div className="bg-slate-800 rounded-lg p-6">
-                      <p className="text-slate-300 text-lg mb-4">{phase.instruction}</p>
-                      
-                      <div className="bg-slate-700 rounded-full h-2 overflow-hidden mb-4">
-                        <div 
-                          className="bg-gradient-to-r from-amber-500 to-orange-500 h-full transition-all duration-300"
-                          style={{ width: `${progress}%` }}
-                        />
-                      </div>
-
-                      <p className="text-amber-400 text-center italic">
-                        "{phase.affirmation}"
-                      </p>
-                    </div>
-
-                    <p className="text-center text-slate-400 text-sm">
-                      Fase {currentPhase + 1} de {WELLBEING_PROTOCOL.length}
+                  <Card className="bg-neutral-800/50 border-gold-500/30 p-6 space-y-4">
+                    <p className="text-xl text-center text-gold-200">
+                      {phase.instruction}
                     </p>
-                  </>
-                ) : (
-                  <div className="text-center space-y-4">
-                    <div className="w-20 h-20 mx-auto bg-amber-500 rounded-full flex items-center justify-center">
-                      ✨
-                    </div>
-                    <h3 className="text-2xl font-bold text-amber-500">Protocolo Completado</h3>
-                    <p className="text-slate-300">
-                      Tu tridente neurológico está en coherencia. Has activado tu bienestar integral.
+                    
+                    <div className="h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent" />
+                    
+                    <p className="text-lg text-center italic text-neutral-300">
+                      "{phase.affirmation}"
                     </p>
-                    <p className="text-amber-400 italic">
-                      "El fénix surge de su propia transformación"
+                  </Card>
+
+                  <div className="space-y-2">
+                    <Progress value={progress} className="h-2" />
+                    <p className="text-xs text-center text-neutral-400">
+                      Fase {currentPhase + 1} de {PSSA_PHASES.length}
                     </p>
                   </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+                </>
+              ) : (
+                <Card className="bg-gradient-to-br from-emerald-900/30 to-emerald-800/30 border-emerald-500/30 p-8">
+                  <div className="text-center space-y-4">
+                    <Sparkles className="w-16 h-16 mx-auto text-gold-400 animate-pulse" />
+                    <h3 className="text-2xl font-bold text-gold-200">
+                      Protocolo Completado
+                    </h3>
+                    <p className="text-lg text-neutral-200">
+                      Tu tridente se recalibra. Has activado coherencia en tus tres cerebros.
+                    </p>
+                    <p className="text-sm italic text-gold-300">
+                      "El fénix emerge de sus propias cenizas doradas"
+                    </p>
+                  </div>
+                </Card>
+              )}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
-}
+};

@@ -57,8 +57,8 @@ export const EvaluationSteps = ({ language = "es" }: EvaluationStepsProps) => {
       <Step 
         isActive={currentStep === 0} 
         onNext={nextStep} 
-        title="PASO 1: INGRESA TU PROBLEMA"
-        description="Este es el inicio de tu camino de transformación. Describe tu situación con tus propias palabras."
+        title="PASO 1: DESCRIBE TU SITUACIÓN"
+        description="Este es el inicio de tu camino de transformación. Describe tu situación actual con tus propias palabras."
       >
         <div className="space-y-4">
           <EmotionalStateSelector 
@@ -66,7 +66,7 @@ export const EvaluationSteps = ({ language = "es" }: EvaluationStepsProps) => {
             setEmotionalState={setEmotionalState} 
           />
           <Textarea
-            placeholder="Describe tu situación actual o inquietud. ¿Qué te gustaría transformar?"
+            placeholder="Describe tu situación actual. ¿Qué deseas transformar en este momento?"
             className="min-h-[120px] text-neutral-800 resize-none border-neutral-300 focus:border-gold-400 focus:ring-gold-400"
             value={problem}
             onChange={(e) => setProblem(e.target.value)}
@@ -160,8 +160,8 @@ export const EvaluationSteps = ({ language = "es" }: EvaluationStepsProps) => {
       <Step 
         isActive={currentStep === 3} 
         onNext={nextStep} 
-        title="PASO 4: INTERACCIÓN NO-JUICIO"
-        description="Un espacio de reflexión sin juicio donde la poesía y el sonido guían tu experiencia."
+        title="PASO 4: ESPACIO DE ACEPTACIÓN"
+        description="Un espacio de reflexión consciente donde la poesía y el sonido guían tu experiencia."
       >
         <PoetrySection emotionalState={emotionalState || undefined} />
       </Step>

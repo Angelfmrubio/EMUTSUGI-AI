@@ -40,7 +40,7 @@ const EvaluationPage = () => {
             <ul className="text-sm text-neutral-700 space-y-1 text-left">
               <li>• Anonimato garantizado en todo el proceso</li>
               <li>• Análisis semántico mediante algoritmos éticos</li>
-              <li>• No constituye un autodiagnóstico definitivo</li>
+              <li>• Orientación profesional basada en patrones identificados</li>
               <li>• Recomendaciones basadas en evidencia científica</li>
             </ul>
           </div>

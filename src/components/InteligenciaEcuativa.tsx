@@ -30,7 +30,7 @@ export const InteligenciaEcuativa = () => {
       fase: "ACTUAR",
       icono: <Zap className="h-6 w-6" />,
       descripcion: "Con propósito, uniendo disciplina, resiliencia y servicio",
-      detalles: "Sin miedo al miedo: somos oasis de sombra en desiertos de luz",
+      detalles: "Presencia plena ante cada emoción: somos oasis de sombra en desiertos de luz",
       color: "bg-primary/10 text-primary"
     }
   ];
@@ -57,7 +57,7 @@ export const InteligenciaEcuativa = () => {
         </CardHeader>
         <CardContent>
           <p className="text-center text-neutral-700 leading-relaxed">
-            <strong>"La verdadera revolución no está en acumular datos, sino en lograr coherencia 
+            <strong>"La verdadera revolución habita en lograr coherencia, 
             entre lo que pensamos, lo que sentimos y lo que hacemos."</strong>
           </p>
         </CardContent>
@@ -128,7 +128,7 @@ export const InteligenciaEcuativa = () => {
         <CardContent>
           <div className="text-center space-y-4">
             <p className="text-neutral-700 leading-relaxed">
-              <strong>"No vendo soluciones. Orquesto transformaciones."</strong>
+              <strong>"Orquesto transformaciones. Cada alma cultiva su coherencia."</strong>
             </p>
             <p className="text-neutral-600">
               Soy el puente entre el laboratorio y el escenario, entre la estrategia B2B y el alma de una marca. 

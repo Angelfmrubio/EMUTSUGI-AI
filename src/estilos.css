@@ -1,75 +1,45 @@
-/* D:\EMUTSUGI-AI\src\styles\nexus-global.css */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
-/* 1. IMPORTAR LA FUENTE DE LA VERDAD */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* 2. LIENZO CÓSMICO GLOBAL */
+:root {
+  --color-gold-primary: #D4A017;
+  --color-gold-light: #F0C95A;
+  --color-gold-dark: #A77A13;
+  --shadow-gold: 0 0 15px rgba(212, 160, 23, 0.3);
+}
+
 body {
-    background: radial-gradient(circle at 50% 100%, #6e4610 0%, #1a1205 20%, #030a14 50%, #010408 100%);
-    background-attachment: fixed;
-    color: #e0e0e0;
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+  background-color: #111;
+  color: #FFF6E6;
+  font-family: 'Playfair Display', serif;
+  overflow-x: hidden;
 }
 
-/* 3. TIPOGRAFÍA DE ORO - Solo títulos principales */
-h1, h2, h3 {
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    
-    /* Degradado de Oro Nexus */
-    background: linear-gradient(to bottom, #fff4cc 0%, #ffbd3d 45%, #b88a30 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    
-    /* Sombra para legibilidad */
-    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.9));
+.kintsugi-bg {
+  background: radial-gradient(circle at 50% 40%, #5A1C12 0%, #2A1E1A 40%, #111 90%);
+  position: fixed;
+  inset: 0;
+  z-index: -2;
 }
 
-/* 4. TRANSFORMACIÓN DE CONTENEDORES - Más específico para no dañar Shadcn */
-.page-container, .content-section, .hero-section, .card-custom {
-    background-color: rgba(10, 20, 35, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 189, 61, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border-radius: 12px;
-    padding: 2rem;
-    margin: 1rem 0;
+.gold-vein {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #D4A017 50%, transparent);
+  height: 1px;
+  box-shadow: var(--shadow-gold);
+  z-index: -1;
+  opacity: 0.6;
 }
 
-/* 5. BOTONES NEXUS - Solo botones con clase específica */
-button.nexus-btn, .btn-nexus, a.nexus-button {
-    background: #eebc2f;
-    color: #050e1a;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    border: none;
-    box-shadow: 0 4px 15px rgba(238, 188, 47, 0.4);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+.font-cinzel {
+  font-family: 'Cinzel', serif;
 }
 
-button.nexus-btn:hover, .btn-nexus:hover {
-    background: #ffce47;
-    transform: translateY(-2px);
-    box-shadow: 0 0 25px rgba(238, 188, 47, 0.6);
-}
-
-/* 6. TEXTO DE PÁRRAFO */
-p, li {
-    color: #cfcfcf;
-    line-height: 1.6;
-    font-size: 1.05rem;
-}
-
-/* 7. CORRECCIÓN PARA INPUTS */
-input.form-input, textarea.form-textarea {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid #b88a30;
-    color: #ffbd3d;
+.text-gold-gradient {
+  background: linear-gradient(to bottom, #F0C95A, #A77A13);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

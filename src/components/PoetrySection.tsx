@@ -41,7 +41,7 @@ export const PoetrySection = ({ emotionalState = "neutral" }: PoetrySectionProps
   function generateCuarteta(emotion: string): string {
     const cuartetas = {
       triste: "En las sombras del dolor profundo,\nbrilla una luz que abraza el mundo,\ncada lágrima es un nuevo comienzo,\ny en el silencio hallo mi recompenso.",
-      ansioso: "La ansiedad me susurra al oído,\npero mi alma no se ha rendido,\nen cada respiro encuentro calma,\ny la paz florece dentro del alma.",
+      ansioso: "La energía me llama a expandirme,\nmi alma está lista para definirse,\nen cada respiro encuentro calma,\ny la paz florece dentro del alma.",
       neutral: "Camino por senderos desconocidos,\ncon pasos firmes y sentidos,\nla vida me enseña en cada momento,\nque soy dueño de mi propio cuento.",
       calmado: "La serenidad abraza mi ser,\ncomo el mar en su amanecer,\nen la quietud encuentro mi fuerza,\ny mi espíritu se refuerza."
     };

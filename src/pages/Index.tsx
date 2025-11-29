@@ -13,11 +13,15 @@ import { NexusMusic } from "@/components/NexusMusic";
 import { LandingHero } from "@/components/LandingHero";
 import { LifeLawsDisplay } from "@/components/LifeLawsDisplay";
 import { ProtocolsPanel } from "@/components/ProtocolsPanel";
+import { CrisisButton } from "@/components/CrisisButton";
 import { useState } from "react";
 import { Compass, Zap, Sparkles, Radio, BrainCircuit, BookOpen } from "lucide-react";
 const Index = () => {
   const [activeView, setActiveView] = useState<'overview' | 'serotonin' | 'autocreate' | 'evaluation' | 'ecuativa' | 'nexusmusic'>('overview');
   return <div className="min-h-screen bg-gradient-to-b from-neutral-50 to-blue-50">
+      {/* Crisis Button - Always Available */}
+      <CrisisButton />
+      
       {/* Hero Section (Portada) */}
       <LandingHero />
 
@@ -32,47 +36,29 @@ const Index = () => {
       <section className="-mt-8">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Tabs value={activeView} onValueChange={(value) => setActiveView(value as any)} className="w-full">
+            <Tabs value={activeView} onValueChange={value => setActiveView(value as any)} className="w-full">
               <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 h-auto p-1 bg-white/50 backdrop-blur-sm border border-primary/20 shadow-lg">
-                <TabsTrigger 
-                  value="overview"
-                  className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105"
-                >
+                <TabsTrigger value="overview" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
                   <Compass className="h-4 w-4" />
                   <span className="text-xs font-medium">Visión General</span>
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="serotonin"
-                  className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105"
-                >
+                <TabsTrigger value="serotonin" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
                   <Zap className="h-4 w-4" />
                   <span className="text-xs font-medium">Serotonina</span>
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="autocreate"
-                  className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105"
-                >
+                <TabsTrigger value="autocreate" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
                   <Sparkles className="h-4 w-4" />
                   <span className="text-xs font-medium">Autocrear</span>
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="nexusmusic"
-                  className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105"
-                >
+                <TabsTrigger value="nexusmusic" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
                   <Radio className="h-4 w-4" />
                   <span className="text-xs font-medium">NexusMusic</span>
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="evaluation" 
-                  className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105"
-                >
+                <TabsTrigger value="evaluation" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
                   <BrainCircuit className="h-4 w-4" />
                   <span className="text-xs font-medium">Evaluación</span>
                 </TabsTrigger>
-                <TabsTrigger 
-                  value="ecuativa"
-                  className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105"
-                >
+                <TabsTrigger value="ecuativa" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
                   <BookOpen className="h-4 w-4" />
                   <span className="text-xs font-medium">Ecuativa</span>
                 </TabsTrigger>
@@ -86,9 +72,7 @@ const Index = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           {activeView === 'overview' && <>
-              <h3 className="text-2xl font-semibold text-center mb-8 text-neutral-800">
-                Los Dos Poderes Fundamentales
-              </h3>
+              <h3 className="text-2xl font-semibold text-center mb-8 text-neutral-800">Los Tres Poderes Fundamentales</h3>
               <div className="grid gap-8 lg:grid-cols-2 max-w-6xl mx-auto">
                 <SerotoninPower showDetailedView />
                 <AutoCreatePower />
