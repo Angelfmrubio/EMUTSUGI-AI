@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="EMUTSUGI - GRIETAS DORADAS CON PROPÓSITO. Transmuta tu sombra, decodifica tu presente, hereda tu legado dorado" />
+  <meta name="description" content="EMUTSUGI - GRIETAS DORADAS CON PROPÓSITO" />
   <meta name="robots" content="noindex, nofollow" />
   <title>EMUTSUGI — Grietas Doradas</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -22,13 +22,15 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* ✅ IMAGEN SOLO AQUÍ - EN EL BODY */
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: Georgia, serif;
       color: var(--clr-text-light);
       background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.95)), 
-                  url('portada-emutsugi.jpg') no-repeat center/cover fixed;
+                  url('portada-emutsugi.jpg') no-repeat center center / cover fixed;
       min-height: 100vh;
       overflow-x: hidden;
+      background-blend-mode: multiply; /* Evita superposiciones */
     }
 
     .session-bar {
@@ -42,6 +44,7 @@
     }
 
     .session-btn {
+      font-family: Georgia, serif;
       padding: 0.5rem 1rem;
       background: rgba(26, 26, 26, 0.8);
       border: 1px solid var(--clr-gold-light);
@@ -63,7 +66,7 @@
       margin-right: 1rem;
     }
 
-    /* PORTADA EXACTA A TU IMAGEN */
+    /* ✅ PORTADA SIN FONDO - usa el del body */
     .portada {
       display: flex;
       flex-direction: column;
@@ -71,9 +74,10 @@
       align-items: center;
       min-height: 100vh;
       padding: 2rem;
-      background: rgba(18, 18, 18, 0.85);
+      background: transparent !important; /* FORZADO transparente */
       backdrop-filter: blur(10px);
       text-align: center;
+      position: relative; /* Para asegurar stacking */
     }
 
     .universo {
@@ -108,14 +112,14 @@
     }
 
     .frase {
+      font-family: Georgia, serif;
       font-size: clamp(1rem, 2.5vw, 1.3rem);
       margin: 2rem auto;
       max-width: 700px;
-      line-height: 1.6;
+      line-height: 1.7;
       text-wrap: balance;
     }
 
-    /* CONTENEDOR DE BOTONES */
     .botones-container {
       display: flex;
       gap: 1.5rem;
@@ -125,6 +129,7 @@
     }
 
     .btn {
+      font-family: Georgia, serif;
       display: inline-block;
       background: rgba(26, 26, 26, 0.6);
       border: 2px solid var(--clr-gold-light);
@@ -169,7 +174,6 @@
       filter: brightness(1.1);
     }
 
-    /* SECCIÓN DIAGNÓSTICOS */
     .diagnosticos {
       background: linear-gradient(to bottom, #111, var(--clr-dark-deep));
       padding: 80px 20px;
@@ -208,23 +212,27 @@
     }
 
     .fecha {
+      font-family: Georgia, serif;
       color: var(--clr-gold-light);
       font-weight: 600;
       font-size: 0.9rem;
     }
 
     .estado {
+      font-family: Georgia, serif;
       margin-top: 0.5rem;
-      line-height: 1.5;
+      line-height: 1.7;
     }
 
     .loading {
+      font-family: Georgia, serif;
       text-align: center;
       padding: 2rem;
       color: var(--clr-copper);
     }
 
     .error {
+      font-family: Georgia, serif;
       color: #ff6b6b;
       padding: 1rem;
       background: rgba(255, 107, 107, 0.1);
@@ -233,13 +241,13 @@
     }
 
     .empty {
+      font-family: Georgia, serif;
       text-align: center;
       padding: 3rem;
       color: var(--clr-copper);
       font-style: italic;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       .session-bar {
         top: auto; bottom: 0; left: 0; right: 0;
@@ -262,6 +270,11 @@
       .btn {
         width: 100%;
       }
+
+      /* FIX móvil: desactiva fixed para mejor rendimiento */
+      body {
+        background-attachment: scroll;
+      }
     }
   </style>
 </head>
@@ -272,7 +285,7 @@
     <button class="session-btn" id="logout-btn">Cerrar Sesión</button>
   </div>
 
-  <!-- PORTADA EXACTA A TU DISEÑO -->
+  <!-- PORTADA -->
   <section class="portada" id="portada">
     <div class="universo">UNIVERSO</div>
     <h1 class="emutsugi">EMUTSUGI</h1>
@@ -295,7 +308,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN PRINCIPIOS (placeholder) -->
+  <!-- SECCIÓN PRINCIPIOS -->
   <section id="principios" class="diagnosticos">
     <div class="container">
       <h2>Principios</h2>
@@ -306,7 +319,7 @@
   </section>
 
   <script type="module">
-    // Configuración CORRECTA (sin espacios)
+    // ✅ CORREGIDO: URLs sin espacios
     const SUPABASE_URL = 'https://vkqqhuvhcndqmypdkrgj.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_at9xQvuR1uX1DD18CJoBNQ_VqWz_Y6z';
     
