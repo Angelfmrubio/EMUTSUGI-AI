@@ -44,6 +44,12 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 45 65% 52%; /* Gold */
+    
+    /* Sistema Nervioso Triuno */
+    --sne: 16 60% 50%; /* Terracota - Sistema Nervioso Entérico */
+    --snic: 14 80% 60%; /* Coral - Sistema Nervioso Cardíaco */
+    --snc: 231 48% 48%; /* Índigo - Sistema Nervioso Cerebral */
+    --kintsugi: 45 65% 52%; /* Oro - Integración Triuna */
   }
 
   .dark {
@@ -82,6 +88,12 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Sistema Nervioso Triuno - Dark Mode */
+    --sne: 16 70% 60%; /* Terracota más claro para dark mode */
+    --snic: 14 85% 65%; /* Coral más claro para dark mode */
+    --snc: 231 60% 60%; /* Índigo más claro para dark mode */
+    --kintsugi: 45 75% 62%; /* Oro más claro para dark mode */
   }
 }
 

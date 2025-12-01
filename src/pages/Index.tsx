@@ -14,10 +14,11 @@ import { LandingHero } from "@/components/LandingHero";
 import { LifeLawsDisplay } from "@/components/LifeLawsDisplay";
 import { ProtocolsPanel } from "@/components/ProtocolsPanel";
 import { CrisisButton } from "@/components/CrisisButton";
+import { HaikuGallery } from "@/components/HaikuGallery";
 import { useState } from "react";
-import { Compass, Zap, Sparkles, Radio, BrainCircuit, BookOpen } from "lucide-react";
+import { Compass, Zap, Sparkles, Radio, BrainCircuit, BookOpen, Heart } from "lucide-react";
 const Index = () => {
-  const [activeView, setActiveView] = useState<'overview' | 'serotonin' | 'autocreate' | 'evaluation' | 'ecuativa' | 'nexusmusic'>('overview');
+  const [activeView, setActiveView] = useState<'overview' | 'serotonin' | 'autocreate' | 'evaluation' | 'ecuativa' | 'nexusmusic' | 'haikus'>('overview');
   return <div className="min-h-screen bg-gradient-to-b from-neutral-50 to-blue-50">
       {/* Crisis Button - Always Available */}
       <CrisisButton />
@@ -37,7 +38,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <Tabs value={activeView} onValueChange={value => setActiveView(value as any)} className="w-full">
-              <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 h-auto p-1 bg-white/50 backdrop-blur-sm border border-primary/20 shadow-lg">
+              <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-7 h-auto p-1 bg-white/50 backdrop-blur-sm border border-primary/20 shadow-lg">
                 <TabsTrigger value="overview" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
                   <Compass className="h-4 w-4" />
                   <span className="text-xs font-medium">Visión General</span>
@@ -61,6 +62,10 @@ const Index = () => {
                 <TabsTrigger value="ecuativa" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
                   <BookOpen className="h-4 w-4" />
                   <span className="text-xs font-medium">Ecuativa</span>
+                </TabsTrigger>
+                <TabsTrigger value="haikus" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
+                  <Heart className="h-4 w-4" />
+                  <span className="text-xs font-medium">Haikus</span>
                 </TabsTrigger>
               </TabsList>
             </Tabs>
@@ -126,6 +131,8 @@ const Index = () => {
                 <NexusMusic />
               </div>
             </>}
+          
+          {activeView === 'haikus' && <HaikuGallery />}
         </div>
       </section>
 

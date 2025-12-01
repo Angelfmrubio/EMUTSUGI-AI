@@ -5,6 +5,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Volume2, VolumeX, BookOpen } from "lucide-react";
 import { toast } from "sonner";
+import { selectHaiku } from '@/utils/haikuSelector';
+import { cn } from '@/lib/utils';
 
 interface PoetrySectionProps {
   emotionalState?: string;
@@ -12,20 +14,24 @@ interface PoetrySectionProps {
 
 export const PoetrySection = ({ emotionalState = "neutral" }: PoetrySectionProps) => {
   const [selectedSoundscape, setSelectedSoundscape] = useState<string>("none");
-  const [currentPoetry, setCurrentPoetry] = useState<string>(generateHaiku(emotionalState));
+  const currentHaiku = selectHaiku({
+    emotion: emotionalState as any,
+    isCrisis: false
+  });
+  const [currentPoetry, setCurrentPoetry] = useState<string>(currentHaiku.text);
+  const [currentNervousSystem, setCurrentNervousSystem] = useState<string>(currentHaiku.nervousSystem);
   const [poetryType, setPoetryType] = useState<string>("Haiku");
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(0.5);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   function generateHaiku(emotion: string): string {
-    const haikus = {
-      triste: "Lágrimas de oro,\nEn el silencio del ser,\nBrota la verdad.",
-      ansioso: "Viento que susurra,\nEntre sombras y temor,\nLa paz se acerca.",
-      neutral: "Sendero dorado,\nEntre grietas, luz emerge,\nNuevo amanecer.",
-      calmado: "Suave melodía,\nEl corazón se expande,\nTodo está en paz."
-    };
-    return haikus[emotion as keyof typeof haikus] || haikus.neutral;
+    const haiku = selectHaiku({
+      emotion: emotion as any,
+      isCrisis: false
+    });
+    setCurrentNervousSystem(haiku.nervousSystem);
+    return haiku.text;
   }
 
   function generatePareado(emotion: string): string {
@@ -121,6 +127,13 @@ export const PoetrySection = ({ emotionalState = "neutral" }: PoetrySectionProps
     }
   };
 
+  const systemColor = {
+    sne: 'text-[hsl(var(--sne))]',
+    snic: 'text-[hsl(var(--snic))]',
+    snc: 'text-[hsl(var(--snc))]',
+    triuno: 'text-[hsl(var(--kintsugi))]'
+  }[currentNervousSystem as 'sne' | 'snic' | 'snc' | 'triuno'];
+
   return (
     <div className="space-y-6">
       <Card className="border-blue-200">
@@ -129,7 +142,11 @@ export const PoetrySection = ({ emotionalState = "neutral" }: PoetrySectionProps
             <BookOpen className="w-5 h-5 text-gold-500" />
             <h3 className="text-xl font-semibold text-neutral-800">Poesía Reflejante ({poetryType})</h3>
           </div>
-          <p className="text-lg text-neutral-700 italic mb-4 font-serif">{currentPoetry}</p>
+          <div className={cn("text-2xl font-serif leading-relaxed mb-4", systemColor)}>
+            {currentPoetry.split('\n').map((line, i) => (
+              <div key={i}>{line}</div>
+            ))}
+          </div>
           <div className="flex gap-2">
             <Button variant="outline" onClick={() => showPoetryVariant("Pareado")}>
               Mostrar Pareado

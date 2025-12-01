@@ -65,6 +65,18 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        sne: {
+          DEFAULT: "hsl(var(--sne))",
+        },
+        snic: {
+          DEFAULT: "hsl(var(--snic))",
+        },
+        snc: {
+          DEFAULT: "hsl(var(--snc))",
+        },
+        kintsugi: {
+          DEFAULT: "hsl(var(--kintsugi))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

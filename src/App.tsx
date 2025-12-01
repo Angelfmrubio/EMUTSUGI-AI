@@ -19,6 +19,7 @@ import PrinciplesPage from "./pages/PrinciplesPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
 import AuthPage from "./pages/AuthPage";
+import HaikuCuratorPage from "./pages/HaikuCuratorPage";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
                 <Route path="/principles" element={<PrinciplesPage />} />
                 <Route path="/privacy" element={<PrivacyPage />} />
                 <Route path="/terms" element={<TermsPage />} />
+                <Route path="/haiku-curator" element={<ProtectedRoute><HaikuCuratorPage /></ProtectedRoute>} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Route>

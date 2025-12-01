@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Flame, Sparkles, Heart, Brain, Footprints } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
+import { selectHaiku } from '@/utils/haikuSelector';
 
 const PSSA_PHASES = [
   {
@@ -49,6 +50,8 @@ export const CrisisButton = () => {
   const [currentPhase, setCurrentPhase] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [progress, setProgress] = useState(0);
+  
+  const crisisHaiku = useMemo(() => selectHaiku({ isCrisis: true }), []);
 
   const startProtocol = () => {
     setIsActive(true);
@@ -171,6 +174,14 @@ export const CrisisButton = () => {
                     <p className="text-lg text-center italic text-neutral-300">
                       "{phase.affirmation}"
                     </p>
+                    
+                    <div className="h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent" />
+                    
+                    <div className="text-center text-[hsl(var(--sne))] text-lg font-serif">
+                      {crisisHaiku.text.split('\n').map((line, i) => (
+                        <div key={i}>{line}</div>
+                      ))}
+                    </div>
                   </Card>
 
                   <div className="space-y-2">

@@ -96,6 +96,36 @@ export type Database = {
         }
         Relationships: []
       }
+      protocolos_completados: {
+        Row: {
+          fase_1_completada: boolean | null
+          fase_2_completada: boolean | null
+          fase_3_completada: boolean | null
+          fase_4_completada: boolean | null
+          fecha_completado: string | null
+          id: string
+          usuario_id: string
+        }
+        Insert: {
+          fase_1_completada?: boolean | null
+          fase_2_completada?: boolean | null
+          fase_3_completada?: boolean | null
+          fase_4_completada?: boolean | null
+          fecha_completado?: string | null
+          id?: string
+          usuario_id: string
+        }
+        Update: {
+          fase_1_completada?: boolean | null
+          fase_2_completada?: boolean | null
+          fase_3_completada?: boolean | null
+          fase_4_completada?: boolean | null
+          fecha_completado?: string | null
+          id?: string
+          usuario_id?: string
+        }
+        Relationships: []
+      }
       Proyectos: {
         Row: {
           AUTHOR: string
