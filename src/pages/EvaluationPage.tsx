@@ -23,21 +23,21 @@ const EvaluationPage = () => {
   }, [currentSession, startNewSession, navigate]);
   
   return (
-    <div className="min-h-screen bg-neutral-50 py-12">
+    <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-gold-600 to-gold-400 bg-clip-text text-transparent">
+        <h1 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           Evaluación Multimodal
         </h1>
         
         <div className="max-w-2xl mx-auto mb-8 text-center">
-          <p className="text-neutral-600 mb-6">
+          <p className="text-muted-foreground mb-6">
             Esta evaluación consta de 7 niveles de análisis. Sus respuestas serán procesadas 
             de forma anónima y confidencial para ofrecer recomendaciones basadas en evidencia.
           </p>
           
-          <div className="p-4 rounded-lg bg-gold-50 border border-gold-200 mb-8">
-            <h3 className="font-medium text-gold-700 mb-2">Principios de Evaluación</h3>
-            <ul className="text-sm text-neutral-700 space-y-1 text-left">
+          <div className="p-4 rounded-lg bg-card border border-border mb-8">
+            <h3 className="font-medium text-primary mb-2">Principios de Evaluación</h3>
+            <ul className="text-sm text-foreground space-y-1 text-left">
               <li>• Anonimato garantizado en todo el proceso</li>
               <li>• Análisis semántico mediante algoritmos éticos</li>
               <li>• Orientación profesional basada en patrones identificados</li>

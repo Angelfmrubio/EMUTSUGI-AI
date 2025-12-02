@@ -1,26 +1,6 @@
-/* Importa las fuentes primero */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
-/* Tailwind siempre después del @import */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Tus estilos personalizados */
-@layer base {
-  html {
-    font-family: 'Inter', sans-serif;
-  }
-
-  h1, h2, h3, h4 {
-    font-family: 'Playfair Display', serif;
-  }
-}
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -64,54 +44,56 @@
     --sidebar-ring: 45 65% 52%; /* Gold */
     
     /* Sistema Nervioso Triuno */
-    --sne: 16 60% 50%; /* Terracota - Sistema Nervioso Entérico */
-    --snic: 14 80% 60%; /* Coral - Sistema Nervioso Cardíaco */
-    --snc: 231 48% 48%; /* Índigo - Sistema Nervioso Cerebral */
-    --kintsugi: 45 65% 52%; /* Oro - Integración Triuna */
+    --sne: 22 80% 55%; /* Terracota VIBRANTE */
+    --snic: 332 85% 60%; /* Coral/Magenta INTENSO */
+    --snc: 232 75% 58%; /* Índigo PROFUNDO */
+    --kintsugi: 45 85% 55%; /* Oro BRILLANTE */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Fondo "Oasis de Sombra" - Negro cálido profundo */
+    --background: 220 15% 8%;
+    --foreground: 45 20% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 15% 10%;
+    --card-foreground: 45 20% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 15% 10%;
+    --popover-foreground: 45 20% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 45 85% 55%; /* Oro brillante */
+    --primary-foreground: 220 15% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 15% 16%;
+    --secondary-foreground: 45 15% 90%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 15% 16%;
+    --muted-foreground: 45 10% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 45 75% 50%;
+    --accent-foreground: 220 15% 8%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 45 20% 95%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 15% 20%;
+    --input: 220 15% 16%;
+    --ring: 45 85% 55%;
     
-    /* Sistema Nervioso Triuno - Dark Mode */
-    --sne: 16 70% 60%; /* Terracota más claro para dark mode */
-    --snic: 14 85% 65%; /* Coral más claro para dark mode */
-    --snc: 231 60% 60%; /* Índigo más claro para dark mode */
-    --kintsugi: 45 75% 62%; /* Oro más claro para dark mode */
+    --sidebar-background: 220 15% 6%;
+    --sidebar-foreground: 45 15% 90%;
+    --sidebar-primary: 45 85% 55%;
+    --sidebar-primary-foreground: 220 15% 8%;
+    --sidebar-accent: 220 15% 14%;
+    --sidebar-accent-foreground: 45 15% 90%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 45 85% 55%;
+    
+    /* Sistema Nervioso Triuno - Dark Mode SATURACIÓN MÁXIMA */
+    --sne: 22 85% 58%; /* Terracota luminoso */
+    --snic: 332 90% 65%; /* Coral/Magenta vibrante */
+    --snc: 232 80% 65%; /* Índigo brillante */
+    --kintsugi: 45 90% 60%; /* Oro radiante */
   }
 }
 
@@ -122,10 +104,96 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
   }
+
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  /* Haikus y citas poéticas */
+  .haiku,
+  .quote,
+  blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  /* Asegurar contraste en textos */
+  .text-primary {
+    color: hsl(var(--primary));
+  }
+
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+
+  /* Gradientes triuno */
+  .gradient-triuno {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--sne)) 0%,
+      hsl(var(--snic)) 50%,
+      hsl(var(--snc)) 100%
+    );
+  }
+
+  .gradient-kintsugi {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--kintsugi)) 0%,
+      hsl(45 95% 70%) 50%,
+      hsl(var(--kintsugi)) 100%
+    );
+  }
+
+  /* Sombras con color */
+  .shadow-kintsugi {
+    box-shadow: 0 4px 20px -4px hsl(var(--kintsugi) / 0.4);
+  }
+
+  .shadow-sne {
+    box-shadow: 0 4px 20px -4px hsl(var(--sne) / 0.4);
+  }
+
+  .shadow-snic {
+    box-shadow: 0 4px 20px -4px hsl(var(--snic) / 0.4);
+  }
+
+  .shadow-snc {
+    box-shadow: 0 4px 20px -4px hsl(var(--snc) / 0.4);
+  }
+}
+
+/* Animaciones */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--kintsugi) / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--kintsugi) / 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
