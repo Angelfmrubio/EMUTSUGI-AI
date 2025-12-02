@@ -17,20 +17,15 @@ import { useState } from "react";
 import { Compass, Zap, Sparkles, Radio, BrainCircuit, BookOpen, Heart } from "lucide-react";
 
 const Index = () => {
-  // 👉 Aquí cambiamos el estado inicial a "evaluation"
   const [activeView, setActiveView] = useState<
     'overview' | 'serotonin' | 'autocreate' | 'evaluation' | 'ecuativa' | 'nexusmusic' | 'haikus'
   >('evaluation');
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-50 to-blue-50">
-      {/* Crisis Button - Always Available */}
       <CrisisButton />
-
-      {/* Hero Section (Portada) */}
       <LandingHero />
 
-      {/* Botón Comenzar Transformación */}
       <div className="flex justify-center mt-6">
         <Button
           onClick={() => setActiveView("evaluation")}
@@ -40,14 +35,12 @@ const Index = () => {
         </Button>
       </div>
 
-      {/* Life Laws Display - EMUTSUGI */}
       <section className="container mx-auto px-4 -mt-4 mb-8">
         <div className="max-w-4xl mx-auto">
           <LifeLawsDisplay />
         </div>
       </section>
 
-      {/* Premium Navigation Tabs */}
       <section className="-mt-8">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -66,7 +59,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Dynamic Content Based on Active View */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           {activeView === 'overview' && (
@@ -88,10 +80,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Transformation Process */}
       <TransformationProcess />
 
-      {/* Features */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h3 className="text-2xl font-semibold text-center mb-12">Enfoque Multimodal de Transformación</h3>
@@ -103,7 +93,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Profile Author */}
       <section className="py-16 bg-neutral-50">
         <div className="container mx-auto px-4 max-w-4xl">
           <h3 className="text-2xl font-semibold text-center mb-8">El Autor del Método</h3>
@@ -111,42 +100,4 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Ethical Considerations */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <Card className="border-primary/20">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-medium mb-4">Consideraciones Éticas</h3>
-              <div className="grid gap-4 md:grid-cols-3">
-                <div className="p-4"><p className="font-medium text-primary mb-2">Privacidad Absoluta</p><p>Tus datos permanecen confidenciales.</p></div>
-                <div className="p-4"><p className="font-medium text-primary mb-2">Complemento Terapéutico</p><p>No reemplaza la intervención profesional.</p></div>
-                <div className="p-4"><p className="font-medium text-primary mb-2">Autonomía Personal</p><p>Empodera tu capacidad de transformación.</p></div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-    </div>
-  );
-};
-
-interface FeatureCardProps {
-  title: string;
-  description: string;
-  iconClass: string;
-  iconText: string;
-}
-
-function FeatureCard({ title, description, iconClass, iconText }: FeatureCardProps) {
-  return (
-    <div className="flex flex-col items-center text-center p-6 rounded-lg border bg-white shadow-sm">
-      <div className={`w-12 h-12 mb-4 rounded-full flex items-center justify-center ${iconClass}`}>
-        <span className="text-primary text-lg">{iconText}</span>
-      </div>
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-neutral-600">{description}</p>
-    </div>
-  );
-}
-
-export default Index;
