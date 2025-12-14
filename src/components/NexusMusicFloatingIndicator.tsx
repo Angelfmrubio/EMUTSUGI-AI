@@ -3,10 +3,9 @@ import { useNexusMusic } from '@/contexts/NexusMusicContext';
 import { cn } from '@/lib/utils';
 
 export const NexusMusicFloatingIndicator = () => {
-  const { isPlaying, isActive, toggle } = useNexusMusic();
+  const { isPlaying, toggle } = useNexusMusic();
 
-  if (!isActive) return null;
-
+  // Siempre visible para activación manual
   return (
     <button
       onClick={toggle}
@@ -15,7 +14,7 @@ export const NexusMusicFloatingIndicator = () => {
         "backdrop-blur-md border shadow-lg transition-all duration-300",
         "hover:scale-105 active:scale-95",
         isPlaying 
-          ? "bg-destructive/90 border-destructive text-destructive-foreground animate-pulse" 
+          ? "bg-kintsugi/90 border-kintsugi text-background animate-pulse" 
           : "bg-card/90 border-border text-muted-foreground hover:text-foreground"
       )}
       aria-label={isPlaying ? "Pausar NexusMusic" : "Reproducir NexusMusic"}

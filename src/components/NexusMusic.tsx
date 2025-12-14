@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Play, Pause, Volume2, Radio, Brain, Heart, Moon, Sun, Loader2 } from "lucide-react";
 import { getAudioStateMessage } from "@/utils/affirmativeLanguage";
 import { CoherenceIndicator } from "@/components/CoherenceIndicator";
+import { useNexusMusic } from "@/contexts/NexusMusicContext";
 
 interface NeuroChannel {
   id: string;
@@ -65,102 +66,34 @@ const NEURO_CHANNELS: NeuroChannel[] = [
 
 export const NexusMusic = () => {
   const [selectedChannel, setSelectedChannel] = useState<NeuroChannel>(NEURO_CHANNELS[0]);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLive, setIsLive] = useState(false);
   const [volume, setVolume] = useState(() => {
     const saved = localStorage.getItem('nexusmusic-volume');
     return saved ? [parseInt(saved)] : [75];
   });
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const { toast } = useToast();
   
-  const STREAM_URL = "https://stream.zeno.fm/wapuwdpgzgruv";
+  const { isPlaying, isActive, audioRef, play, pause } = useNexusMusic();
+  const { toast } = useToast();
+  const isLive = isPlaying;
+
 
   useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    const handleCanPlay = () => {
-      setIsLoading(false);
-      setIsLive(true);
-      console.log('NexusMusic: Stream ready to play');
-    };
-
-    const handleWaiting = () => {
-      setIsLoading(true);
-      console.log('NexusMusic: Buffering...');
-    };
-
-    const handleError = (e: Event) => {
-      setIsLoading(false);
-      setIsPlaying(false);
-      setIsLive(false);
-      console.error('NexusMusic: Stream recalibrating', e);
-      toast({
-        title: "Recalibración de Frecuencia",
-        description: getAudioStateMessage('error'),
-      });
-      
-      // Auto-retry after 3 seconds
-      setTimeout(() => {
-        if (audio) {
-          audio.load();
-        }
-      }, 3000);
-    };
-
-    const handleLoadStart = () => {
-      setIsLoading(true);
-      console.log('NexusMusic: Loading stream...');
-    };
-
-    audio.addEventListener('canplay', handleCanPlay);
-    audio.addEventListener('waiting', handleWaiting);
-    audio.addEventListener('error', handleError);
-    audio.addEventListener('loadstart', handleLoadStart);
-
-    return () => {
-      audio.removeEventListener('canplay', handleCanPlay);
-      audio.removeEventListener('waiting', handleWaiting);
-      audio.removeEventListener('error', handleError);
-      audio.removeEventListener('loadstart', handleLoadStart);
-    };
-  }, [toast]);
-
-  useEffect(() => {
-    // Save volume to localStorage
+    // Save volume to localStorage and sync with context audio
     localStorage.setItem('nexusmusic-volume', volume[0].toString());
-    
-    // Update audio volume
     if (audioRef.current) {
       audioRef.current.volume = volume[0] / 100;
     }
-  }, [volume]);
+  }, [volume, audioRef]);
 
   const togglePlay = async () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
     try {
       if (isPlaying) {
-        audio.pause();
-        setIsPlaying(false);
-        setIsLive(false);
+        pause();
         console.log(`NexusMusic: Paused ${selectedChannel.name}`);
       } else {
         setIsLoading(true);
-        // Bust cache and (re)set src right before playing to improve compatibility with some streams
-        const srcWithTs = `${STREAM_URL}?nocache=${Date.now()}`;
-        if (audio.src !== srcWithTs) {
-          audio.src = srcWithTs;
-        }
-        // Ensure volume is applied
-        audio.volume = (volume?.[0] ?? 75) / 100;
-        // Load explicitly, then play
-        audio.load();
-        await audio.play();
-        setIsPlaying(true);
+        await play();
+        setIsLoading(false);
         console.log(`NexusMusic: Playing ${selectedChannel.name} - Stream Live`);
         toast({
           title: "🔴 EN VIVO",
@@ -169,7 +102,6 @@ export const NexusMusic = () => {
       }
     } catch (error) {
       setIsLoading(false);
-      setIsPlaying(false);
       console.error('NexusMusic: Play recalibrating:', error);
       toast({
         title: "Recalibración",
@@ -183,12 +115,8 @@ export const NexusMusic = () => {
     const channel = NEURO_CHANNELS.find(c => c.id === channelId);
     if (channel) {
       setSelectedChannel(channel);
-      if (audioRef.current && isPlaying) {
-        audioRef.current.pause();
-        // Clear src to force full reload on next play for better compatibility
-        audioRef.current.src = '';
-        setIsPlaying(false);
-        setIsLive(false);
+      if (isPlaying) {
+        pause();
       }
       console.log(`NexusMusic: Channel changed to ${channel.name}`);
     }
@@ -196,12 +124,6 @@ export const NexusMusic = () => {
 
   return (
     <div className="space-y-6">
-      {/* Hidden Audio Element */}
-      <audio
-        ref={audioRef}
-        preload="auto"
-        playsInline
-      />
       
       {/* Main Radio Interface */}
       <Card className="border-2 border-primary/20 bg-gradient-to-br from-background to-primary/5 shadow-lg">

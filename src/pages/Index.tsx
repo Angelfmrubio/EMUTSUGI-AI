@@ -1,71 +1,120 @@
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { TransformationProcess } from "@/components/TransformationProcess";
-import { UserProfile } from "@/components/UserProfile";
-import { EvaluationSteps } from "@/components/EvaluationSteps";
+import { InteractiveEvaluationSteps } from "@/components/InteractiveEvaluationSteps";
 import { SerotoninPower } from "@/components/SerotoninPower";
 import { AutoCreatePower } from "@/components/AutoCreatePower";
-import { NeuropoeticEvaluation } from "@/components/NeuropoeticEvaluation";
 import { InteligenciaEcuativa } from "@/components/InteligenciaEcuativa";
 import { ProfileAuthor } from "@/components/ProfileAuthor";
 import { NexusMusic } from "@/components/NexusMusic";
 import { LandingHero } from "@/components/LandingHero";
-import { LifeLawsDisplay } from "@/components/LifeLawsDisplay";
-import { ProtocolsPanel } from "@/components/ProtocolsPanel";
+import { ActitudPrevia } from "@/components/ActitudPrevia";
+import { NexusMusicSection } from "@/components/NexusMusicSection";
 import { CrisisButton } from "@/components/CrisisButton";
 import { HaikuGallery } from "@/components/HaikuGallery";
+import { AlquimistaVerbal } from "@/components/AlquimistaVerbal";
+import { NexusMusicFloatingIndicator } from "@/components/NexusMusicFloatingIndicator";
 import { useState } from "react";
-import { Compass, Zap, Sparkles, Radio, BrainCircuit, BookOpen, Heart } from "lucide-react";
+import { Compass, Zap, Sparkles, Radio, BrainCircuit, BookOpen, Heart, Flame, Lightbulb, TrendingUp, Target } from "lucide-react";
+
 const Index = () => {
-  const [activeView, setActiveView] = useState<'overview' | 'serotonin' | 'autocreate' | 'evaluation' | 'ecuativa' | 'nexusmusic' | 'haikus'>('overview');
-  return <div className="min-h-screen bg-gradient-to-b from-neutral-50 to-blue-50">
+  const [activeView, setActiveView] = useState<'overview' | 'serotonin' | 'autocreate' | 'evaluation' | 'ecuativa' | 'nexusmusic' | 'haikus' | 'alquimista'>('overview');
+  
+  return (
+    <div className="min-h-screen bg-background">
       {/* Crisis Button - Always Available */}
       <CrisisButton />
       
-      {/* Hero Section (Portada) */}
+      {/* NexusMusic Floating Indicator - Siempre Visible */}
+      <NexusMusicFloatingIndicator />
+      
+      {/* Hero Section - Nueva Narrativa */}
       <LandingHero />
+      
+      {/* La Actitud Previa - Citas de Mentores */}
+      <ActitudPrevia />
+      
+      {/* NexusMusic Section - Destacada */}
+      <NexusMusicSection />
 
-      {/* Life Laws Display - EMUTSUGI */}
-      <section className="container mx-auto px-4 -mt-4 mb-8">
-        <div className="max-w-4xl mx-auto">
-          <LifeLawsDisplay />
+      {/* 4 Leyes / Pilares */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-center mb-4 text-foreground">
+            Los Cuatro Pilares
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Principios fundamentales que guían tu transformación hacia la coherencia.
+          </p>
+          
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <PillarCard 
+              icon={Lightbulb}
+              title="Creatividad" 
+              description="Imagina nuevos mundos desde tu soberanía interior."
+              color="text-snc"
+            />
+            <PillarCard 
+              icon={Sparkles}
+              title="Innovación" 
+              description="Transforma lo antiguo en posibilidad brillante."
+              color="text-kintsugi"
+            />
+            <PillarCard 
+              icon={TrendingUp}
+              title="Superación" 
+              description="Cada paso es evidencia de tu resiliencia."
+              color="text-snic"
+            />
+            <PillarCard 
+              icon={Target}
+              title="Impacto" 
+              description="Tu transformación inspira mundos enteros."
+              color="text-sne"
+            />
+          </div>
         </div>
       </section>
 
-      {/* Premium Navigation Tabs */}
-      <section className="-mt-8">
-        <div className="container mx-auto px-4">
+      {/* Navigation Tabs */}
+      <section className="py-8 bg-card/30">
+        <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
+            <p className="text-center text-muted-foreground mb-6">Explora las herramientas de transformación:</p>
             <Tabs value={activeView} onValueChange={value => setActiveView(value as any)} className="w-full">
-              <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-7 h-auto p-1 bg-white/50 backdrop-blur-sm border border-primary/20 shadow-lg">
-                <TabsTrigger value="overview" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
+              <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-8 h-auto p-1 bg-card/80 backdrop-blur-sm border border-border/30 shadow-lg">
+                <TabsTrigger value="overview" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-kintsugi data-[state=active]:text-background transition-all duration-200">
                   <Compass className="h-4 w-4" />
-                  <span className="text-xs font-medium">Visión General</span>
+                  <span className="text-xs font-medium">Visión</span>
                 </TabsTrigger>
-                <TabsTrigger value="serotonin" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
+                <TabsTrigger value="serotonin" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-sne data-[state=active]:text-background transition-all duration-200">
                   <Zap className="h-4 w-4" />
                   <span className="text-xs font-medium">Serotonina</span>
                 </TabsTrigger>
-                <TabsTrigger value="autocreate" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
+                <TabsTrigger value="autocreate" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-snc data-[state=active]:text-background transition-all duration-200">
                   <Sparkles className="h-4 w-4" />
                   <span className="text-xs font-medium">Autocrear</span>
                 </TabsTrigger>
-                <TabsTrigger value="nexusmusic" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
+                <TabsTrigger value="nexusmusic" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-kintsugi data-[state=active]:text-background transition-all duration-200">
                   <Radio className="h-4 w-4" />
                   <span className="text-xs font-medium">NexusMusic</span>
                 </TabsTrigger>
-                <TabsTrigger value="evaluation" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
+                <TabsTrigger value="evaluation" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-snic data-[state=active]:text-background transition-all duration-200">
                   <BrainCircuit className="h-4 w-4" />
                   <span className="text-xs font-medium">Evaluación</span>
                 </TabsTrigger>
-                <TabsTrigger value="ecuativa" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
+                <TabsTrigger value="ecuativa" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-snc data-[state=active]:text-background transition-all duration-200">
                   <BookOpen className="h-4 w-4" />
                   <span className="text-xs font-medium">Ecuativa</span>
                 </TabsTrigger>
-                <TabsTrigger value="haikus" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 hover:scale-105">
+                <TabsTrigger value="haikus" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-snic data-[state=active]:text-background transition-all duration-200">
                   <Heart className="h-4 w-4" />
                   <span className="text-xs font-medium">Haikus</span>
+                </TabsTrigger>
+                <TabsTrigger value="alquimista" className="flex flex-col items-center gap-1 p-3 data-[state=active]:bg-kintsugi data-[state=active]:text-background transition-all duration-200">
+                  <Flame className="h-4 w-4" />
+                  <span className="text-xs font-medium">Alquimista</span>
                 </TabsTrigger>
               </TabsList>
             </Tabs>
@@ -75,89 +124,84 @@ const Index = () => {
 
       {/* Dynamic Content Based on Active View */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          {activeView === 'overview' && <>
-              <h3 className="text-2xl font-semibold text-center mb-8 text-neutral-800">Los Tres Poderes Fundamentales</h3>
-              <div className="grid gap-8 lg:grid-cols-2 max-w-6xl mx-auto">
+        <div className="container mx-auto px-6">
+          {activeView === 'overview' && (
+            <div className="max-w-6xl mx-auto space-y-12">
+              <h3 className="font-serif text-2xl font-semibold text-center text-foreground">
+                Los Poderes Fundamentales
+              </h3>
+              <div className="grid gap-8 lg:grid-cols-2">
                 <SerotoninPower showDetailedView />
                 <AutoCreatePower />
               </div>
-              
-              {/* Protocolos EMUTSUGI */}
-              <div className="mt-12 max-w-6xl mx-auto">
-                <ProtocolsPanel />
-              </div>
-            </>}
+            </div>
+          )}
           
-          {activeView === 'serotonin' && <>
-              <h3 className="text-2xl font-semibold text-center mb-8 text-neutral-800">
-                El Poder de la Serotonina: SNE + SNC
+          {activeView === 'serotonin' && (
+            <div className="max-w-4xl mx-auto">
+              <h3 className="font-serif text-2xl font-semibold text-center mb-8 text-foreground">
+                El Poder de la Serotonina
               </h3>
-              <div className="max-w-4xl mx-auto">
-                <SerotoninPower showDetailedView />
-              </div>
-            </>}
+              <SerotoninPower showDetailedView />
+            </div>
+          )}
           
-          {activeView === 'autocreate' && <>
-              <h3 className="text-2xl font-semibold text-center mb-8 text-neutral-800">
-                El Poder de AUTOCREAR antes de Creer
+          {activeView === 'autocreate' && (
+            <div className="max-w-4xl mx-auto">
+              <h3 className="font-serif text-2xl font-semibold text-center mb-8 text-foreground">
+                El Poder de Autocrear
               </h3>
-              <div className="max-w-4xl mx-auto">
-                <AutoCreatePower />
-              </div>
-            </>}
+              <AutoCreatePower />
+            </div>
+          )}
           
-          {activeView === 'evaluation' && <>
-              <h3 className="text-2xl font-semibold text-center mb-8 text-neutral-800">
-                Evaluación Neuropoética Avanzada
+          {activeView === 'evaluation' && (
+            <div className="max-w-4xl mx-auto">
+              <h3 className="font-serif text-2xl font-semibold text-center mb-8 text-foreground">
+                Evaluación Interactiva del Arquitecto
               </h3>
-              <div className="max-w-4xl mx-auto">
-                <NeuropoeticEvaluation />
-              </div>
-            </>}
+              <InteractiveEvaluationSteps />
+            </div>
+          )}
           
-          {activeView === 'ecuativa' && <>
-              <h3 className="text-2xl font-semibold text-center mb-8 text-neutral-800">
-                Inteligencia Ecuativa: El Método del Fénix
+          {activeView === 'ecuativa' && (
+            <div className="max-w-6xl mx-auto">
+              <h3 className="font-serif text-2xl font-semibold text-center mb-8 text-foreground">
+                Inteligencia Ecuativa
               </h3>
               <InteligenciaEcuativa />
-            </>}
+            </div>
+          )}
           
-          {activeView === 'nexusmusic' && <>
-              <h3 className="text-2xl font-semibold text-center mb-8 text-neutral-800">
-                NexusMusic: La Neurofrecuencia Digital del Alma
+          {activeView === 'nexusmusic' && (
+            <div className="max-w-6xl mx-auto">
+              <h3 className="font-serif text-2xl font-semibold text-center mb-8 text-foreground">
+                NexusMusic: Frecuencias de Sanación
               </h3>
-              <div className="max-w-6xl mx-auto">
-                <NexusMusic />
-              </div>
-            </>}
+              <NexusMusic />
+            </div>
+          )}
           
           {activeView === 'haikus' && <HaikuGallery />}
+          
+          {activeView === 'alquimista' && (
+            <div className="max-w-4xl mx-auto">
+              <h3 className="font-serif text-2xl font-semibold text-center mb-8 text-foreground">
+                El Alquimista Verbal
+              </h3>
+              <AlquimistaVerbal />
+            </div>
+          )}
         </div>
       </section>
 
       {/* Transformation Process */}
       <TransformationProcess />
 
-      {/* Features */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h3 className="text-2xl font-semibold text-center mb-12 text-neutral-800">
-            Enfoque Multimodal de Transformación
-          </h3>
-          
-          <div className="grid gap-8 md:grid-cols-3">
-            <FeatureCard title="Análisis Neuropoético" description="Detección de patrones de rigidez emocional a través de procesamiento de lenguaje natural avanzado." iconClass="bg-primary/10" iconText="✧" />
-            <FeatureCard title="Partituras de Solución" description="Transformación de problemas en metáforas personalizadas que generan nuevas posibilidades." iconClass="bg-accent/10" iconText="♪" />
-            <FeatureCard title="Acción Trimodal" description="Protocolos específicos de cambio a nivel somático, lingüístico y sistémico." iconClass="bg-primary/10" iconText="⟳" />
-          </div>
-        </div>
-      </section>
-
       {/* Profile Author */}
-      <section className="py-16 bg-neutral-50">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h3 className="text-2xl font-semibold text-center mb-8 text-neutral-800">
+      <section className="py-16 bg-card/30">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <h3 className="font-serif text-2xl font-semibold text-center mb-8 text-foreground">
             El Autor del Método
           </h3>
           <ProfileAuthor />
@@ -165,49 +209,54 @@ const Index = () => {
       </section>
 
       {/* Ethical Considerations */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <Card className="border-primary/20">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-medium mb-4 text-neutral-800">Consideraciones Éticas</h3>
-              <div className="grid gap-4 md:grid-cols-3">
-                <div className="p-4">
-                  <p className="font-medium text-primary mb-2">Privacidad Absoluta</p>
-                  <p className="text-sm text-neutral-600">Tus datos permanecen confidenciales y seguros, sin almacenamiento a largo plazo.</p>
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <Card className="border-border/30 bg-card/50">
+            <CardContent className="p-8">
+              <h3 className="font-serif text-xl font-semibold mb-6 text-foreground text-center">
+                Compromiso Ético
+              </h3>
+              <div className="grid gap-6 md:grid-cols-3">
+                <div className="text-center space-y-2">
+                  <p className="font-semibold text-kintsugi">Privacidad Absoluta</p>
+                  <p className="text-sm text-muted-foreground">Tus datos permanecen confidenciales y seguros.</p>
                 </div>
-                <div className="p-4">
-                  <p className="font-medium text-primary mb-2">Complemento Terapéutico</p>
-                  <p className="text-sm text-neutral-600">No reemplaza la intervención profesional, pero puede potenciar sus resultados.</p>
+                <div className="text-center space-y-2">
+                  <p className="font-semibold text-snic">Complemento Terapéutico</p>
+                  <p className="text-sm text-muted-foreground">Potencia los resultados de tu proceso personal.</p>
                 </div>
-                <div className="p-4">
-                  <p className="font-medium text-primary mb-2">Autonomía Personal</p>
-                  <p className="text-sm text-neutral-600">Diseñado para empoderar tu capacidad de transformación sin dependencias.</p>
+                <div className="text-center space-y-2">
+                  <p className="font-semibold text-snc">Autonomía Personal</p>
+                  <p className="text-sm text-muted-foreground">Empodera tu capacidad de transformación.</p>
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
       </section>
-    </div>;
+    </div>
+  );
 };
-interface FeatureCardProps {
+
+interface PillarCardProps {
+  icon: React.ElementType;
   title: string;
   description: string;
-  iconClass: string;
-  iconText: string;
+  color: string;
 }
-function FeatureCard({
-  title,
-  description,
-  iconClass,
-  iconText
-}: FeatureCardProps) {
-  return <div className="flex flex-col items-center text-center p-6 rounded-lg border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow">
-      <div className={`w-12 h-12 mb-4 rounded-full flex items-center justify-center ${iconClass}`}>
-        <span className="text-primary text-lg">{iconText}</span>
-      </div>
-      <h3 className="text-xl font-semibold mb-2 text-neutral-800">{title}</h3>
-      <p className="text-neutral-600">{description}</p>
-    </div>;
+
+function PillarCard({ icon: Icon, title, description, color }: PillarCardProps) {
+  return (
+    <Card className="border-border/30 bg-card/50 backdrop-blur-sm hover:border-kintsugi/30 transition-all duration-300 hover:shadow-lg">
+      <CardContent className="p-6 text-center space-y-4">
+        <div className={`w-14 h-14 mx-auto rounded-full bg-background/80 flex items-center justify-center`}>
+          <Icon className={`h-7 w-7 ${color}`} />
+        </div>
+        <h3 className="font-semibold text-lg text-foreground">{title}</h3>
+        <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+      </CardContent>
+    </Card>
+  );
 }
+
 export default Index;
