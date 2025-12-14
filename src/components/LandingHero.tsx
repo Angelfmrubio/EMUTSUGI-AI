@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useNexusMusic } from "@/contexts/NexusMusicContext";
-import portadaImage from "@/assets/portada-emutsugi-hero.jpg";
+// FINAL: Usando el alias original y el nombre de archivo confirmado
+import portadaImage from "@/assets/portada-emutsugi.jpg"; 
 
 export function LandingHero() {
   const navigate = useNavigate();
@@ -32,27 +33,27 @@ export function LandingHero() {
               EMUTSUGI
             </h1>
             
-            {/* NUEVO SUBTÍTULO: Tu texto en español */}
+            {/* Subtítulo */}
             <p className="text-lg sm:text-xl tracking-[0.3em] uppercase font-semibold font-sans text-foreground/90">
               TUS GRIETAS DORADAS TIENEN PROPÓSITO
             </p>
           </div>
 
-          {/* NUEVO ANCHOR PHRASE / SLOGAN PRINCIPAL */}
+          {/* Slogan Principal */}
           <blockquote className="font-serif text-xl sm:text-2xl md:text-3xl text-foreground italic leading-relaxed max-w-3xl mx-auto py-8">
             "Respeto Fuente de Arquitectura Creativa"
           </blockquote>
 
-          {/* Subtitle (Frase inferior - con contraste corregido) */}
+          {/* Subtítulo inferior */}
           <p className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-sans text-foreground/90">
             Decodifica tu presente. Transmuta tu sombra. Descifra tu legado dorado.
           </p>
 
-          {/* CTA Buttons (Colores y texto invertidos) */}
+          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
             <Button 
               size="lg" 
-              // Estilo negro sólido (como en la imagen)
+              // Estilo negro sólido
               className="bg-black hover:bg-neutral-800 text-white text-lg py-6 px-10 font-semibold font-sans" 
               onClick={() => navigate('/evaluation')}
             >
@@ -61,7 +62,7 @@ export function LandingHero() {
             <Button 
               variant="outline" 
               size="lg" 
-              // Estilo blanco/claro (como en la imagen)
+              // Estilo blanco/claro
               className={`border-white bg-white hover:bg-neutral-100 text-black text-lg py-6 px-10 shadow-xl font-sans ${isPlaying ? 'bg-neutral-200' : ''}`} 
               onClick={toggle}
             >
